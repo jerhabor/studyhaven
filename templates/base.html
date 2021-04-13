@@ -4,7 +4,6 @@
 <html lang="en">
 
     <head>
-        <!-- Core Meta -->
         {% block meta %}
             <!-- Support for older Internet Explorer versions -->
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,20 +11,23 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% endblock %}
-        <!-- Extra Meta files -->
+
         {% block extra_meta %}
         {% endblock %}
-        <!-- Core CSS -->
+
         {% block core_css %}
             <!-- Bootstrap CSS -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
                 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         {% endblock %}
-        <!-- Extra CSS files -->
+
         {% block extra_css %}
         {% endblock %}
-        <!-- Core JavaScript -->
+
+
         {% block core_js %}
+            <!-- Font Awesome Kitcode -->
+            <script src="https://kit.fontawesome.com/57e47c4f6b.js" crossorigin="anonymous"></script>
             <!-- Bootstrap Scripts -->
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
                 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -37,15 +39,75 @@
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
             </script>
         {% endblock %}
-        <!-- Extra JavaScript to load prior to page load -->
+
+        <!-- Extra JavaScript prior to page load -->
         {% block extra_js %}
         {% endblock %}
+
         <!-- Browser Tab Title -->
         <title>StudyHaven {% block extra_title %}{% endblock %}</title>
     </head>
 
     <body>
         <header class="container-fluid fixed-top">
+            <div class="row">
+                <div class="col-12 col-lg-4 text-center text-lg-left">
+                    <a href="{% url 'home' %}" class="nav-link">
+                        <h2 class="text-dark"><strong class="text-danger">Study</strong>Haven</h2>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <form action="" method="GET">
+                        <div class="input-group">
+                            <div class="form-outline">
+                                <input type="search" id="form1" class="form-control" />
+                                <label class="form-label" for="form1">Search Our Shop</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary form-control">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item dropdown">
+                            <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="text-center">
+                                    <div><i class="fas fa-user fa-lg"></i></div>
+                                    <p class="my-0">My Account</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="user-options">
+                                {% if request.user.is_authenticated %}
+                                    {% if request.user.is_superuser %}
+                                        <a href="" class="dropdown-item">Product Management</a>
+                                    {% endif %}
+                                        <a href="" class="dropdown-item">My Profile</a>
+                                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                    {% else %}
+                                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dark{% endif %} nav-link" href="">
+                                <div class="text-center">
+                                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                    <p class="my-0">
+                                        {% if grand_total %}
+                                            £{{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            £0.00
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </header>
 
         <!-- Django Messages -->
