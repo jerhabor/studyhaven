@@ -1,16 +1,44 @@
+/* ---------------------------------------------------- General Styling and Special Fonts */
+
+@font-face {
+  font-family: lovelo;
+  src: url(../../static/fonts/Lovelo-Black.otf);
+}
+
 body {
     background-color: #ffc1b5;
-    font-family: 'Lato';
+    font-family: 'Roboto', sans-serif;
+}
+
+.site-logo {
+    font-family: lovelo;
+    padding: 15px 0px 10px;
+}
+
+.logo-study-text {
+    color: #ff5757;
+}
+
+.nav-icon-text {
+    font-size: small;
+}
+
+.nav-bar {
+    box-sizing: border-box;
+}
+
+#main-nav {
+    text-transform: uppercase;
+}
+
+.nav-bar.logo-container,
+.nav-bar.search-container,
+.nav-bar.user-container {
+    padding: 10px 0px;
 }
 
 .logo-container {
     box-sizing: border-box;
-}
-
-.logo-image {
-    padding: 15px 0px 10px;
-    width: 50%;
-    height: auto;
 }
 
 .search-container {
@@ -26,6 +54,10 @@ body {
     margin-bottom: 0px !important;
 }
 
+.menu-bar {
+    background-color: #996515;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -35,7 +67,7 @@ body {
     width: 1.5rem;
 }
 
-/* -------------------------------------------------------- Media Queries */
+/* ---------------------------------------------------- Media Queries */
 
 @media (min-width: 1200px) {
     .container {
