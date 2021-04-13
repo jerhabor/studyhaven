@@ -1,0 +1,67 @@
+<!-- StudyHaven logo -->
+<li class="list-inline-item">
+    <div class="text-center logo-container d-block d-lg-none">
+        <a href="{% url 'home' %}" class="nav-link">
+            <h4 class="site-logo text-dark"><span class="logo-study-text">Study</span>Haven</h4>
+        </a>
+    </div>
+</li>
+<!-- Search Bar (hidden on xs, sm and m screen sizes) -->
+<li class="list-inline-item">
+    <a class="text-dark d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="text-center">
+            <div><i class="fas fa-search fa-lg"></i></div>
+            <p class="my-0 nav-icon-text">Search</p>
+        </div>
+    </a>
+    <div class="dropdown-menu w-100 pl-2 mt-0" aria-labelledby="mobile-search">
+        <form class="form" action="" method="GET">
+            <div class="input-group w-100">
+                <div class="form-outline text-center">
+                    <input type="text" name="q" class="form-control" placeholder="Search our shop"/>
+                </div>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-dark form-control">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</li>
+<!-- 'My Account' icon-->
+<li class="list-inline-item">
+    <a class="text-dark nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="text-center">
+            <div><i class="fas fa-user fa-lg"></i></div>
+            <p class="my-0 nav-icon-text">My Account</p>
+        </div>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="user-options">
+        {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <a href="" class="dropdown-item">Product Management</a>
+            {% endif %}
+                <a href="" class="dropdown-item">My Profile</a>
+                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+            {% else %}
+                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+        {% endif %}
+    </div>
+</li>
+<!-- Shopping bag icon -->
+<li class="list-inline-item">
+    <a class="d-block d-lg-none {% if grand_total %}text-info font-weight-bold{% else %}text-dark{% endif %} nav-link" href="">
+        <div class="text-center">
+            <div><i class="fas fa-shopping-basket fa-lg"></i></div>
+            <p class="my-0 nav-icon-text">
+                {% if grand_total %}
+                    £{{ grand_total|floatformat:2 }}
+                {% else %}
+                    £0.00
+                {% endif %}
+            </p>
+        </div>
+    </a>
+</li>
