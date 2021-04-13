@@ -19,6 +19,12 @@
             <!-- Bootstrap CSS -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
                 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <!-- Google Fonts -->
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&display=swap">
+            <!-- CSS Stylesheet -->
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+            <link rel="icon" type="image/png" href="">
         {% endblock %}
 
         {% block extra_css %}
@@ -51,25 +57,26 @@
     <body>
         <header class="container-fluid fixed-top">
             <div class="row">
-                <div class="col-12 col-lg-4 text-center text-lg-left">
+                <div class="col-12 col-lg-4 text-center text-lg-left logo-container">
                     <a href="{% url 'home' %}" class="nav-link">
-                        <h2 class="text-dark"><strong class="text-danger">Study</strong>Haven</h2>
+                        <img class="logo-image" src="/media/sh-web-logo.png" alt="StudyHaven logo"/>
                     </a>
                 </div>
-                <div class="col-12 col-lg-4">
+                <div class="col-12 col-lg-4 my-auto search-container">
                     <form action="" method="GET">
                         <div class="input-group">
-                            <div class="form-outline">
-                                <input type="search" id="form1" class="form-control" />
-                                <label class="form-label" for="form1">Search Our Shop</label>
+                            <div class="form-outline text-center w-75">
+                                <input type="text" name="q" class="form-control" placeholder="Search our shop"/>
                             </div>
-                            <button type="submit" class="btn btn-primary form-control">
-                                <i class="fas fa-search"></i>
-                            </button>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-dark form-control">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-12 col-lg-4">
+                <div class="col-12 col-lg-4 user-container">
                     <ul class="list-inline text-center">
                         <li class="list-inline-item dropdown">
                             <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -94,7 +101,7 @@
                         <li class="list-inline-item">
                             <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dark{% endif %} nav-link" href="">
                                 <div class="text-center">
-                                    <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                    <div><i class="fas fa-shopping-basket fa-lg"></i></div>
                                     <p class="my-0">
                                         {% if grand_total %}
                                             £{{ grand_total|floatformat:2 }}

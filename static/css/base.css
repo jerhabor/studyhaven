@@ -1,0 +1,49 @@
+body {
+    background-color: #ffc1b5;
+    font-family: 'Lato';
+}
+
+.logo-container {
+    box-sizing: border-box;
+}
+
+.logo-image {
+    padding: 15px 0px 10px;
+    width: 50%;
+    height: auto;
+}
+
+.search-container {
+    box-sizing: border-box;
+}
+
+.search-container .input-group {
+    justify-content: center;
+}
+
+.user-container .list-inline {
+    padding: 10px 0px;
+    margin-bottom: 0px !important;
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+/* -------------------------------------------------------- Media Queries */
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .user-container .list-inline {
+        text-align: right !important;
+}
