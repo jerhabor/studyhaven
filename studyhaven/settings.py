@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',  # handles normal logging/sign in
+    'allauth.socialaccount',  # handles logging in via social media providers
 ]
 
 MIDDLEWARE = [
@@ -59,6 +63,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                # required by django-allauth to access HTTP request
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -66,6 +71,37 @@ TEMPLATES = [
         },
     },
 ]
+
+# The following is obtained from the django-allauth documentation:
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+""" Used by the allauth.socialaccount to create proper
+callback URLs as users log in via social media """
+SITE_ID = 1
+
+""" Temporary log email confirmations to console """
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email required to register on StudyHaven
+ACCOUNT_EMAIL_REQUIRED = True
+# User must confirm their email to be fully registered on StudyHaven
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# Allows user to log in with either username or email
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+# To avoid typos in the email that the user provides
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+# Minimum username length of 6 characters
+ACCOUNT_USERNAME_MIN_LENGTH = 6
+# The URL to access the login page
+LOGIN_URL = '/accounts/login/'
+# User is redirected to home page after successful login
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'studyhaven.wsgi.application'
 
