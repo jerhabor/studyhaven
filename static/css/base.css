@@ -1,4 +1,4 @@
-/* ---------------------------------------------------- General Styling and Special Fonts */
+/* ---------------------------------------------------- BASE STYLING & SPECIAL FONTS */
 
 @font-face {
   font-family: lovelo;
@@ -6,8 +6,7 @@
 }
 
 body {
-    background-color: #ffc1b5;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Barlow', sans-serif;
 }
 
 .site-logo {
@@ -21,6 +20,7 @@ body {
 
 .nav-icon-text {
     font-size: small;
+    font-weight: 700;
 }
 
 .nav-bar {
@@ -67,7 +67,79 @@ body {
     width: 1.5rem;
 }
 
-/* ---------------------------------------------------- Media Queries */
+/* ---------------------------------------------------- HOME MAIN CAROUSEL */
+
+.carousel-item {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+/* ---------------------------------------------------- TESTIMONIAL CAROUSEL */
+
+.reviews-icon {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#reviews-slides li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #000;
+}
+
+.checked {
+    color: #FFA500;
+}
+
+#reviews-slides .carousel-indicators {
+  bottom: -50px;
+}
+
+#reviews-slides .carousel-inner {
+   margin-bottom: 50px;
+}
+
+#reviews-slides .carousel-item {
+    padding: 0px 15px;
+}
+
+#reviews-slides p:first-of-type {
+    font-family: 'Roboto', sans-serif;
+}
+
+.back-to-top {
+    border: solid 1px #000;
+    box-sizing: border-box;
+    width: 150px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    padding: 7px;
+    font-size: 15px;
+}
+
+.back-to-top a {
+    color: #000;
+    text-decoration: none;
+}
+
+.back-to-top:hover {
+    background-color: #808080;
+}
+
+.back-to-top a:hover {
+    color: #fff;
+}
+
+/* ---------------------------------------------------- MEDIA QUERIES */
 
 @media (min-width: 1200px) {
     .container {
@@ -78,4 +150,5 @@ body {
 @media (min-width: 992px) {
     .user-container .list-inline {
         text-align: right !important;
+    }
 }
