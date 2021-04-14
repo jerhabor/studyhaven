@@ -56,19 +56,19 @@
 
     <body>
         <header class="container-fluid fixed-top nav-bar">
-            <div class="row bg-white d-lg-flex">
+            <div class="row bg-white d-none d-lg-flex">
                 <!-- StudyHaven logo -->
-                <div class="col-12 col-lg-4 text-center text-lg-left d-none d-lg-block logo-container">
+                <div class="col-12 col-lg-3 text-center text-lg-left d-none d-lg-block logo-container">
                     <a href="{% url 'home' %}" class="nav-link">
                         <h2 class="site-logo text-dark"><span class="logo-study-text">Study</span>Haven</h2>
                     </a>
                 </div>
                 <!-- Search Bar (hidden on xs, sm and m screen sizes) -->
-                <div class="col-12 col-lg-4 d-none d-lg-block my-auto search-container">
+                <div class="col-12 col-lg-6 d-none d-lg-block my-auto search-container">
                     <form action="" method="GET">
                         <div class="input-group w-100">
                             <div class="form-outline text-center">
-                                <input type="text" name="q" class="form-control" placeholder="Search our shop"/>
+                                <input type="text" name="q" class="form-control search-bar" placeholder="Search our shop"/>
                             </div>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-dark form-control">
@@ -79,7 +79,7 @@
                     </form>
                 </div>
                 <!-- 'My Account' & 'Shopping Bag' icons-->
-                <div class="col-12 col-lg-4 d-none d-lg-block my-auto user-container">
+                <div class="col-12 col-lg-3 d-none d-lg-block my-auto user-container">
                     <ul class="list-inline text-center ml-auto">
                         <li class="list-inline-item dropdown">
                             <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -118,7 +118,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row bg-white">
+            <div class="row bg-white d-block d-lg-none">
                 <nav class="navbar navbar-expand-lg navbar-light w-100">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
