@@ -68,7 +68,7 @@
                     <form action="" method="GET">
                         <div class="input-group w-100">
                             <div class="form-outline text-center">
-                                <input type="text" name="q" class="form-control search-bar" placeholder="Search our shop"/>
+                                <input type="text" name="q" class="form-control search-bar-web" placeholder="Search our shop"/>
                             </div>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-dark form-control">
@@ -118,8 +118,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="row bg-white d-block d-lg-none">
-                <nav class="navbar navbar-expand-lg navbar-light w-100">
+            <div class="row bg-white">
+                <nav class="navbar navbar-expand-lg navbar-light w-100 pt-lg-0">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -142,6 +142,111 @@
         <!-- Page Content -->
         {% block content %}
         {% endblock %}
+
+        <!-- Page Footer -->
+        
+        <!-- Footer -->
+        <footer class="page-footer font-small pt-4">
+
+            <!-- Footer Links -->
+            <div class="container-fluid text-center text-md-left">
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-6 mt-md-0 mt-3">
+
+                        <!-- Content -->
+                        <h5 class="text-uppercase">Contact Us</h5>
+                        <p>info@studyhaven.com</p>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <hr class="clearfix w-100 d-md-none pb-3">
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <!-- Links -->
+                        <h5 class="text-uppercase">Shop</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">11+ Workbooks</a>
+                            </li>
+                            <li>
+                                <a href="#!">KS2 Workbooks</a>
+                            </li>
+                            <li>
+                                <a href="#!">GCSE Workbooks</a>
+                            </li>
+                            <li>
+                                <a href="#!">A-Level Workbooks</a>
+                            </li>
+                            <li>
+                                <a href="#!">Stationery</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <!-- Links -->
+                        <h5 class="text-uppercase">Links</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">My Account</a>
+                            </li>
+                            <li>
+                                <a href="#!">FAQs</a>
+                            </li>
+                            <li>
+                                <a href="#!">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#!">Terms & Conditions</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+                <div class="row">
+                    <div class="col-12 search-container">
+                    <form action="" method="GET">
+                        <div class="input-group w-100">
+                            <div class="form-outline text-center d-inline-flex">
+                                <input type="text" name="q" class="form-control" placeholder="Search our shop"/>
+                            </div>
+                            <div class="input-group-append d-inline-flex">
+                                <button type="submit" class="btn btn-dark form-control">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Footer Links -->
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                © StudyHaven 2021
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
 
         <!-- JavaScript to load after the page contents -->
         {% block postload_js %}
