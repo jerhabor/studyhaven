@@ -44,35 +44,44 @@ body {
     justify-content: center;
 }
 
-.form-control.search-bar {
+.form-control.search-bar-web {
     width: 350px;
 }
+
+/* .search-bar-mob {
+    width: 200px;
+} */
 
 .user-container .list-inline {
     padding: 10px 0px;
     margin-bottom: 0px !important;
 }
 
-.menu-bar {
-    background-color: #996515;
+footer {
+    background-color: rgba(255, 87, 87, 0.9);
 }
 
 /* ---------------------------------------------------- HOME MAIN CAROUSEL */
 
-.carousel-item {
+#header-slides .carousel-item {
     width: 100%;
-    height: auto;
+    height: 500px;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
 }
 
-.carousel-inner img {
+.carousel-item img {
     width: 100%;
     height: auto;
     overflow: hidden;
 }
 
 /* ---------------------------------------------------- TESTIMONIAL CAROUSEL */
+
+.testimonials-container {
+    position: relative;
+    box-sizing: border-box;
+}
 
 .reviews-icon {
     font-size: 30px;
@@ -137,9 +146,19 @@ body {
     }
 }
 
+@media (max-width: 992px) {
+    #header-slides {
+        top: 88px;
+    }
+}
+
 @media (min-width: 992px) {
     .user-container .list-inline {
         text-align: right !important;
+    }
+    
+    #header-slides {
+        top: 135px;
     }
 }
 
@@ -151,4 +170,12 @@ body {
     .nav-link {
         padding: .5rem 0rem !important;
     }
+
+    /* .img-web {
+        display: block;
+    }
+
+    .img-mob {
+        display: none;
+    } */
 }
