@@ -100,7 +100,7 @@ footer {
     padding: 0px 10px 30px;
 }
 
-/* ---------------------------------------------------- TESTIMONIAL CAROUSEL */
+/* ---------------------------------------------------- HOME TESTIMONIAL CAROUSEL */
 
 .testimonials-container {
     position: relative;
@@ -161,6 +161,9 @@ footer {
 .back-to-top a:hover {
     color: #fff;
 }
+
+/* ---------------------------------------------------- PRODUCTS TEMPLATE */
+
 
 /* ---------------------------------------------------- MEDIA QUERIES */
 
