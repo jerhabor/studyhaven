@@ -187,6 +187,10 @@ footer {
     .header-container {
         padding-top: 135px;
     }
+    
+    .dropdown:hover .dropdown-menu {
+        display: block !important;
+    }
 }
 
 @media (max-width: 414px) {
