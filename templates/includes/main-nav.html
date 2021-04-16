@@ -1,59 +1,61 @@
 <div class="collapse navbar-collapse" id="main-nav">
-    <ul class="navbar-nav mx-auto">
-        <li class="nav-item active">
-            <a class="nav-link mr-lg-4" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown d-sm-none">
-            <a class="nav-link mr-lg-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                My Account
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% if request.user.is_authenticated %}
-                    {% if request.user.is_superuser %}
-                        <a href="" class="dropdown-item">Product Management</a>
+    {% with request.resolver_match.url_name as url_name %}
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
+                <a class="nav-link mr-lg-4" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown d-sm-none {% if url_name == 'account' %}active{% endif %}">
+                <a class="nav-link mr-lg-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    My Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <a href="" class="dropdown-item">Product Management</a>
+                        {% endif %}
+                            <a href="" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                        {% else %}
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                     {% endif %}
-                        <a href="" class="dropdown-item">My Profile</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                    {% else %}
-                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                {% endif %}
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link mr-lg-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Shop
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">View All</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">11+ Workbooks</a>
-                <a class="dropdown-item" href="#">KS2 Workbooks</a>
-                <a class="dropdown-item" href="#">GCSE Workbooks</a>
-                <a class="dropdown-item" href="#">A-Level Workbooks</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Stationery</a>
-            </div>
-        </li>
-        <li class="nav-item mr-lg-4">
-            <a class="nav-link" href="#">Tutoring</a>
-        </li>
-        <li class="nav-item mr-lg-4">
-            <a class="nav-link" href="#">FAQs</a>
-        </li>
-        <form action="" method="GET">
-            <div class="input-group w-100 d-inline-flex d-md-none">
-                <div class="form-outline text-center">
-                    <input type="text" name="q" class="form-control search-bar-mob" placeholder="Search our shop"/>
                 </div>
-                <div class="input-group-append d-inline-flex">
-                    <button type="submit" class="btn btn-dark form-control">
-                        <i class="fas fa-search"></i>
-                    </button>
+            </li>
+            <li class="nav-item dropdown {% if url_name == 'shop' %}active{% endif %}">
+                <a class="nav-link mr-lg-4 dropdown-toggle" href="{% url 'shop' %}" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Shop
+                </a>
+                <div class="dropdown-menu d-none" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'shop' %}">View All</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">11+ Workbooks</a>
+                    <a class="dropdown-item" href="#">KS2 Workbooks</a>
+                    <a class="dropdown-item" href="#">GCSE Workbooks</a>
+                    <a class="dropdown-item" href="#">A-Level Workbooks</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Stationery</a>
                 </div>
-            </div>
-        </form>
-    </ul>
+            </li>
+            <li class="nav-item mr-lg-4">
+                <a class="nav-link" href="#">Tutoring</a>
+            </li>
+            <li class="nav-item mr-lg-4">
+                <a class="nav-link" href="#">FAQs</a>
+            </li>
+            <form action="" method="GET">
+                <div class="input-group w-100 d-inline-flex d-md-none">
+                    <div class="form-outline text-center">
+                        <input type="text" name="q" class="form-control search-bar-mob" placeholder="Search our shop"/>
+                    </div>
+                    <div class="input-group-append d-inline-flex">
+                        <button type="submit" class="btn btn-dark form-control">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </ul>
+    {% endwith %}
 </div>
