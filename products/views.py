@@ -1,4 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages
+# to allow for search criteria in product name OR description
+from django.db.models import Q
 from .models import Product
 
 
@@ -7,8 +10,22 @@ def all_products(request):
     and also handle searching and sorting queries. """
 
     products = Product.objects.all()
+    query = None
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You did not enter a search criteria.")
+                return redirect(reverse('shop'))
+
+            # Case-insensitive queries made to search product name/description
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
+
     context = {
         'shop': products,
+        'query': query,
     }
 
     return render(request, 'products/products.html', context)
