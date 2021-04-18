@@ -47,12 +47,12 @@
                     </div>
                     <div class="col-12 col-md-6 my-auto d-flex justify-content-center justify-content-md-end">
                         <div class="sorting-container w-50">
-                            <select id="sort-selector" class="custom-select custom-select-sm border">
-                                <option value="reset" {% if sort_method == 'None_None' %}selected{% endif %}>Sort by:</option>
-                                <option value="category_asc" {% if sort_method == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
-                                <option value="category_desc" {% if sort_method == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
-                                <option value="name_asc" {% if sort_method == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                                <option value="name_desc" {% if sort_method == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                            <select id="sort-options" class="custom-select custom-select-sm border">
+                                <option value="reset" {% if sort == 'None_None' %}selected{% endif %}>Featured</option>
+                                <option value="category_asc" {% if sort == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                                <option value="category_desc" {% if sort == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                                <option value="name_asc" {% if sort == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                <option value="name_desc" {% if sort == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
                             </select>
                         </div>
                     </div>
@@ -111,4 +111,26 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postload_js %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#sort-options').change(function() {
+            var sortOptions = $(this);
+            var pageUrl = new URL(window.location);
+            var optionVal = sortOptions.val();
+            if(optionVal != "reset"){
+                var sort = optionVal.split("_")[0];
+                var method = optionVal.split("_")[1];
+                pageUrl.searchParams.set("sort", sort);
+                pageUrl.searchParams.set("method", method);
+                window.location.replace(pageUrl);
+            } else {
+                pageUrl.searchParams.set("sort");
+                pageUrl.searchParams.set("method");
+                window.location.replace(pageUrl);
+            }
+        })
+    </script>
 {% endblock %}
