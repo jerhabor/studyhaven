@@ -84,6 +84,12 @@ footer {
     transform: scale(1.5);
 }
 
+.btn-go {
+    border: solid 1px #000;
+    background-color: #ff5757;
+    color: #fff;
+}
+
 /* ---------------------------------------------------- HOME MAIN CAROUSEL */
 
 #header-slides .carousel-item {
