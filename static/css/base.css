@@ -18,6 +18,10 @@ body {
     color: #ff5757;
 }
 
+.dropdown-menu {
+    margin-top: 0;
+}
+
 .nav-bar {
     box-sizing: border-box;
 }
@@ -164,6 +168,14 @@ footer {
 
 /* ---------------------------------------------------- PRODUCTS TEMPLATE */
 
+.tags:hover {
+    background-color: #212529;
+    color: #fff !important;
+}
+
+.view-all-link:hover {
+    font-weight: 700;
+}
 
 /* ---------------------------------------------------- MEDIA QUERIES */
 
