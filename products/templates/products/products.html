@@ -16,14 +16,14 @@
                 <h2 class="site-logo">Shop</h2>
                 {% if chosen_category == None %}
                     {% for c in all_categories %}
-                        <a href="{% url 'shop' %}?category={{ c.name }}" class="text-decoration-none">
-                            <span class="border border-dark tags text-dark small text-break p-1">{{ c.shop_name }}</span>
+                        <a href="{% url 'shop' %}?category={{ c.name }}" class="text-decoration-none tag-link">
+                            <span class="border border-dark tags text-dark small text-break p-1 mx-1">{{ c.shop_name }}</span>
                         </a>
                     {% endfor %}
                 {% else %}
                     {% for c in chosen_category %}
-                        <a href="{% url 'shop' %}?category={{ c.name }}" class="text-decoration-none">
-                            <span class="border border-dark tags text-dark small text-break p-1">{{ c.shop_name }}</span>
+                        <a href="{% url 'shop' %}?category={{ c.name }}" class="text-decoration-none tag-link">
+                            <span class="border border-dark tags text-dark small text-break p-1 mx-1">{{ c.shop_name }}</span>
                         </a>
                     {% endfor %}
                 {% endif %}
@@ -116,6 +116,9 @@
 {% block postload_js %}
     {{ block.super }}
     <script type="text/javascript">
+
+        $(".tag-link:nth-of-type(2n)").add('.tag-link:last').after("<div class='d-md-none mt-2'></div>");
+
         $('#sort-options').change(function() {
             var sortOptions = $(this);
             var pageUrl = new URL(window.location);
