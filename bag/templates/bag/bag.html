@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3 text-center">
+                <h2 class="site-logo">Shopping Bag</h2>
+                <div class="col-12 col-lg-6 offset-lg-3 my-auto">
+                    <ul class="list-inline text-center ml-auto">
+                        <li class="list-inline-item dropdown">
+                            <div class="text-center">
+                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">1</span></div>
+                                <p class="mt-1">Shopping Bag</p>
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <div class="text-center">
+                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">2</span></div>
+                                <p class="mt-1">Delivery</p>
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <div class="text-center">
+                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">3</span></div>
+                                <p class="mt-1">Payment</p>
+                            </div>
+                        </li>
+                        <li class="list-inline-item">
+                            <div class="text-center">
+                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">4</span></div>
+                                <p class="mt-1">Completed</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="w-50">
+            </div>
+        </div>
+    </div>
+{% endblock %}
