@@ -177,6 +177,17 @@ footer {
     font-weight: 700;
 }
 
+/* ---------------------------------------------------- SHOPPING BAG TEMPLATE */
+
+.checkout-steps {
+    height: 30px;
+    width: 30px;
+    padding-top: .3em;
+    border: solid 1px #000;
+    align-items: center;
+    border-radius: 50%;
+}
+
 /* ---------------------------------------------------- MEDIA QUERIES */
 
 @media (min-width: 1200px) {

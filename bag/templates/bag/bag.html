@@ -15,34 +15,62 @@
             <div class="col-12 mt-3 text-center">
                 <h2 class="site-logo">Shopping Bag</h2>
                 <div class="col-12 col-lg-6 offset-lg-3 my-auto">
-                    <ul class="list-inline text-center ml-auto">
-                        <li class="list-inline-item dropdown">
-                            <div class="text-center">
-                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">1</span></div>
-                                <p class="mt-1">Shopping Bag</p>
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item">
+                            <div class="text-center small">
+                                <div class="checkout-steps bg-dark text-white">1</div>
+                                <p class="mt-1">Bag</p>
                             </div>
                         </li>
                         <li class="list-inline-item">
-                            <div class="text-center">
-                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">2</span></div>
-                                <p class="mt-1">Delivery</p>
+                            <i class="fas fa-angle-right fa-md"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <div class="text-center small">
+                                <div class="checkout-steps">2</div>
+                                <p class="mt-1">Info</p>
                             </div>
                         </li>
                         <li class="list-inline-item">
-                            <div class="text-center">
-                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">3</span></div>
-                                <p class="mt-1">Payment</p>
+                            <i class="fas fa-angle-right fa-md"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <div class="text-center small">
+                                <div class="checkout-steps">3</div>
+                                <p class="mt-1">Pay</p>
                             </div>
                         </li>
                         <li class="list-inline-item">
-                            <div class="text-center">
-                                <div><span class="py-1 px-2 border border-dark rounded-circle align-items-center small">4</span></div>
-                                <p class="mt-1">Completed</p>
+                            <i class="fas fa-angle-right fa-md"></i>
+                        </li>
+                        <li class="list-inline-item">
+                            <div class="text-center small">
+                                <div class="checkout-steps">4</div>
+                                <p class="mt-1">Done</p>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <hr class="w-50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {% if bag_items %}
+                    <div class="table-responsive"></div>
+                {% else %}
+                    <div class="text-center mb-5">
+                        <p class="lead text-center">Your bag is empty!</p>
+                        <a href="{% url 'shop' %}" class="btn btn-dark btn-lg">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span>
+                                Go To Shop
+                            </span>
+                        </a>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
