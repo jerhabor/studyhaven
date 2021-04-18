@@ -10,8 +10,11 @@ def all_products(request):
     and also handle searching and sorting queries. """
 
     products = Product.objects.all()
+    category_list = Category.objects.all()
     categories = None
     query = None
+    sort = None
+    method = None
 
     if request.GET:
         if 'category' in request.GET:
@@ -30,13 +33,17 @@ def all_products(request):
             # Case-insensitive queries made to search product name/description
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
+        
+        print(categories)
 
     context = {
         'shop': products,
+        'chosen_category': categories,
+        'all_categories': category_list,
         'query': query,
-        'categories': categories,
+        'sort_method': method
     }
-
+    
     return render(request, 'products/products.html', context)
 
 

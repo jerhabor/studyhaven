@@ -12,15 +12,50 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col mt-3 text-center">
+            <div class="col-12 mt-3 text-center">
                 <h2 class="site-logo">Shop</h2>
+                {% if chosen_category == None %}
+                    {% for c in all_categories %}
+                        <a href="{% url 'shop' %}?category={{ c.name }}" class="text-decoration-none">
+                            <span class="border border-dark tags text-dark small text-break p-1">{{ c.shop_name }}</span>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    {% for c in chosen_category %}
+                        <a href="{% url 'shop' %}?category={{ c.name }}" class="text-decoration-none">
+                            <span class="border border-dark tags text-dark small text-break p-1">{{ c.shop_name }}</span>
+                        </a>
+                    {% endfor %}
+                {% endif %}
                 <hr class="w-50">
             </div>
         </div>
         <div class="row">
             <div class="col products-container offset-1 col-10">
-                <div class="row">
-
+                <div class="row mt-1 mb-3">
+                    <div class="col-12 col-md-6">
+                        <p class="text-center text-md-left text-muted">
+                            {% if chosen_category or query != 'None_None' %}
+                                <span class="mt-2">
+                                    <a href="{% url 'shop' %}" class="text-decoration-none">
+                                        <span class="text-dark small view-all-link text-break p-1 mr-1">View All</span>
+                                    </a> | 
+                                </span>
+                            {% endif %}
+                            <span class="text-dark small ml-2">{{ shop|length }} Products{% if query %} found for <strong>"{{ query }}"</strong>{% endif %}</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-6 my-auto d-flex justify-content-center justify-content-md-end">
+                        <div class="sorting-container w-50">
+                            <select id="sort-selector" class="custom-select custom-select-sm border">
+                                <option value="reset" {% if sort_method == 'None_None' %}selected{% endif %}>Sort by:</option>
+                                <option value="category_asc" {% if sort_method == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                                <option value="category_desc" {% if sort_method == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                                <option value="name_asc" {% if sort_method == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                <option value="name_desc" {% if sort_method == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     {% for product in shop %}
@@ -42,6 +77,11 @@
                                     <div class="row">
                                         <div class="col">
                                             <p class="card-text font-weight-bold text-left">£{{ product.price }}</p>
+                                            <p class="small">
+                                                <a href="{% url 'shop' %}?category={{ product.category.name }}" class="text-muted">
+                                                    <i class="fas fa-tag"></i> {{ product.category.shop_name }}
+                                                </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
