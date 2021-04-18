@@ -1,4 +1,6 @@
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from products.models import Product
 from decimal import Decimal
 
 
@@ -8,9 +10,20 @@ def bag_contents(request):
     bag_products = []
     total_price = 0
     product_count = 0
+    shopping_bag = request.session.get('bag', {})
+
+    for pk, quantity in shopping_bag.items():
+        product = get_object_or_404(Product, pk=pk)
+        total_price += product.price * quantity
+        product_count += quantity
+        bag_products.append({
+            'product': product,
+            'item_id': pk,
+            'quantity': quantity
+        })
 
     if total_price < settings.THRESHOLD_FOR_FREE_DELIVERY:
-        delivery = settings.STANDARD_DELIVERY
+        delivery = total_price + Decimal(settings.STANDARD_DELIVERY)
         left_for_free_delivery = settings.THRESHOLD_FOR_FREE_DELIVERY - total_price
     else:
         delivery = 0
