@@ -23,8 +23,12 @@ def bag_contents(request):
         })
 
     if total_price < settings.THRESHOLD_FOR_FREE_DELIVERY:
-        delivery = total_price + Decimal(settings.STANDARD_DELIVERY)
-        left_for_free_delivery = settings.THRESHOLD_FOR_FREE_DELIVERY - total_price
+        if product_count > 0:
+            delivery = Decimal(settings.STANDARD_DELIVERY)
+            left_for_free_delivery = settings.THRESHOLD_FOR_FREE_DELIVERY - total_price
+        else:
+            delivery = 0
+            left_for_free_delivery = settings.THRESHOLD_FOR_FREE_DELIVERY - total_price
     else:
         delivery = 0
         left_for_free_delivery = 0
