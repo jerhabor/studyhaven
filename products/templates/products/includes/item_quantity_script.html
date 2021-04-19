@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    /* Disable minus button by default so that user
+    does not add quantity 0 to the bag */
+    var quantityAmounts = $('.quantity-amount');
+    for(var i = 0; i < quantityAmounts.length; i++){
+        var productId = $(quantityAmounts[i]).data('item_id');
+        disableButtons(productId);
+    }
+
+    /* Check each time the user clicks button or uses arrow keys to 
+    increment or decrement the quantity */
+    $('.quantity-amount').change(function() {
+        var productId = $(this).data('item_id');
+        disableButtons(productId);
+    });
+
+
+    /* Disable the add and minus buttons if the user tries to increment
+    or decrement the quantity outside of the range 1-99 */
+    function disableButtons(productId) {
+        var cachedQuantity = parseInt($(
+            `#quantity-amount_${productId}`).val());
+        var disableAddButton = cachedQuantity > 98;
+        var disableMinusButton = cachedQuantity < 2;
+        $(`#minus-one_${productId}`).prop('disabled', disableMinusButton);
+        $(`#add-one_${productId}`).prop('disabled', disableAddButton);
+    }
+
+    /* Subtract one from the amount displayed in the quantity box */
+    $('.minus-one').click(function(e) {
+        e.preventDefault();
+        var quantityInput = $(this).closest(
+            '.input-group').find('.quantity-amount')[0];
+        var cachedQuantity = parseInt($(quantityInput).val());
+        $(quantityInput).val(cachedQuantity - 1);
+        var productId = $(this).data('item_id');
+        disableButtons(productId);
+    });
+
+    /* Add one to the amount displayed in the quantity box */
+    $('.add-one').click(function(e) {
+        e.preventDefault();
+        var quantityInput = $(this).closest(
+            '.input-group').find('.quantity-amount')[0];
+        var cachedQuantity = parseInt($(quantityInput).val());
+        $(quantityInput).val(cachedQuantity + 1);
+        var productId = $(this).data('item_id');
+        disableButtons(productId);
+    })
+</script>
