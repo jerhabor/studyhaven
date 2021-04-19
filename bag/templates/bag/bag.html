@@ -56,9 +56,79 @@
         </div>
         <div class="row">
             <div class="col-12">
+                <p class="text-center">
+                    Number of items in your bag: {{ product_count }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 {% if bag_products %}
                     <div class="table-responsive">
-                        {{ bag_products }}
+                        <table class="table table-sm table-striped table-borderless">
+                            <thead>
+                                <tr>
+                                <th scope="col">Product:</th>
+                                <th scope="col"></th>
+                                <th scope="col">Price:</th>
+                                <th scope="col">Quantity:</th>
+                                <th scope="col">Subtotal:</th>
+                                <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in bag_products %}
+                                <tr>
+                                    <td class="w-25 p-3">
+                                        <img class="img-fluid" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                    </td>
+                                    <td class="py-3">
+                                        <p><strong>{{ item.product.name }}</strong></p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p>£{{ item.product.price }}</p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p>{{ item.quantity }}</p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p>£{{ item.product.price }}</p>
+                                    </td>
+                                    <td class="py-3">
+                                        <p><i class="fas fa-times-circle fa-lg"></i></p>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                <tr class="table-light">
+                                    <td colspan="5" class="pt-5 text-right">
+                                        <h6><strong>Bag Total: £{{ total_price|floatformat:2 }}</strong></h6>
+                                        <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                        <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                        {% if left_for_free_delivery > 0 %}
+                                            <p class="mb-1 text-danger">
+                                                Spend <strong>£{{ left_for_free_delivery }}</strong> more to get free delivery!
+                                            </p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="text-right">
+                                        <a href="{% url 'shop' %}" class="btn btn-outline-dark btn-lg mr-2">
+                                            <span class="icon">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </span>
+                                            <span class="text-uppercase">Keep Shopping</span>
+                                        </a>
+                                        <a href="" class="btn btn-dark btn-lg">
+                                            <span class="text-uppercase">Secure Checkout</span>
+                                            <span class="icon">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 {% else %}
                     <div class="text-center mb-5">
