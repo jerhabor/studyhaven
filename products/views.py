@@ -52,7 +52,7 @@ def all_products(request):
     context = {
         'shop': products,
         'chosen_category': categories,
-        'sort': chosen_sort,
+        'chosen_sort': chosen_sort,
         'all_categories': category_list,
         'query': query,
         'method': method

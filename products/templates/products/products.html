@@ -48,11 +48,11 @@
                     <div class="col-12 col-md-6 my-auto d-flex justify-content-center justify-content-md-end">
                         <div class="sorting-container w-50">
                             <select id="sort-options" class="custom-select custom-select-sm border">
-                                <option value="reset" {% if sort == 'None_None' %}selected{% endif %}>Featured</option>
-                                <option value="category_asc" {% if sort == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
-                                <option value="category_desc" {% if sort == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
-                                <option value="name_asc" {% if sort == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                                <option value="name_desc" {% if sort == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                                <option value="reset" {% if chosen_sort == 'None_None' %}selected{% endif %}>Featured</option>
+                                <option value="category_asc" {% if chosen_sort == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                                <option value="category_desc" {% if chosen_sort == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                                <option value="name_asc" {% if chosen_sort == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                <option value="name_desc" {% if chosen_sort == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
                             </select>
                         </div>
                     </div>
@@ -130,8 +130,8 @@
                 pageUrl.searchParams.set("method", method);
                 window.location.replace(pageUrl);
             } else {
-                pageUrl.searchParams.set("sort");
-                pageUrl.searchParams.set("method");
+                pageUrl.searchParams.delete("sort");
+                pageUrl.searchParams.delete("method");
                 window.location.replace(pageUrl);
             }
         })
