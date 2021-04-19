@@ -194,6 +194,10 @@ footer {
     border-radius: 50%;
 }
 
+.remove-product {
+    cursor: pointer;
+}
+
 /* ---------------------------------------------------- MEDIA QUERIES */
 
 @media (min-width: 1200px) {

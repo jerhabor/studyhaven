@@ -1,5 +1,8 @@
 {% extends "base.html" %}
+<!-- Loading static files including CSS, fonts and images -->
 {% load static %}
+<!-- Loading extra bag functions including subtotal calculation -->
+{% load bag_extras %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -95,7 +98,7 @@
                                         <p>£{{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3">
-                                        <form action="" method="post" class="form cachedForm">
+                                        <form action="{% url 'update_bag' item.item_id %}" method="post" class="form cached-form">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -119,10 +122,10 @@
                                         </form>
                                     </td>
                                     <td class="py-3">
-                                        <p>£{{ item.product.price }}</p>
+                                        <p>£{{ item.product.price | subtotal_calculation:item.quantity }}</p>
                                     </td>
                                     <td class="py-3">
-                                        <a href="#" class="text-decoration-none text-dark"><i class="fas fa-times-circle fa-lg"></i></a>
+                                        <a class="text-decoration-none text-dark remove-product" id="remove_{{ item.item_id }}"><i class="fas fa-times-circle fa-lg"></i></a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -178,11 +181,32 @@
 {% block postload_js %}
     {{ block.super }}
     {% include 'products/includes/item_quantity_script.html' %}
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         // Quantity is updated as the user increments or decrements
-        $('.add-one').click(function(e) {
-            var form = $(this).prev($('.cachedForm'));
+        $('.quantity-amount').change(function() {
+            var form = $(this).parents('.cached-form');
             form.submit();
-        })
-    </script> -->
+        });
+        $('.add-one').click(function() {
+            var form = $(this).parents('.cached-form');
+            form.submit();
+        });
+        $('.minus-one').click(function() {
+            var form = $(this).parents('.cached-form');
+            form.submit();
+        });
+
+        // From Code Institute Boutique Ado Tutorial
+        /* Remove the product from the shopping bag and reloading 
+        the page with the remaining items in the bag */
+        $('.remove-product').click(function(e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var url = `/bag/remove/${itemId}/`;
+            var data = {'csrfmiddlewaretoken': csrfToken};
+            $.post(url, data).done(function() {
+                location.reload();
+            });
+        });
+    </script>
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse, reverse
 
 
 def view_shopping_bag(request):
@@ -24,3 +24,35 @@ def add_item_to_bag(request, product_id):
 
     request.session['bag'] = shopping_bag
     return redirect(redirect_url)
+
+
+def update_bag(request, product_id):
+    """" View for the user to be able to adjust quantity
+    product in the bag and the bag updates accordingly """
+
+    qty = int(request.POST.get('quantity'))
+    shopping_bag = request.session.get('bag', {})
+
+    if qty > 0:
+        shopping_bag[product_id] = qty
+    else:
+        shopping_bag.pop(product_id)
+
+    request.session['bag'] = shopping_bag
+    return redirect(reverse('view_bag'))
+
+
+def remove_bag_item(request, product_id):
+    """" View for the user to be able to click the 'x'
+    and remove the item from their bag. The bag template
+    will also update once remove event occurs """
+
+    try:
+        shopping_bag = request.session.get('bag', {})
+        shopping_bag.pop(product_id)
+
+        request.session['bag'] = shopping_bag
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
