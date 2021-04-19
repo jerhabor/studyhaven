@@ -57,7 +57,13 @@
         <div class="row">
             <div class="col-12">
                 <p class="text-center">
-                    Number of items in your bag: {{ product_count }}
+                    You have
+                    {% if product_count > 1 or 0 %}
+                        <strong> {{ product_count }} </strong>items 
+                    {% else %}
+                        <strong> {{ product_count }} </strong>item 
+                    {% endif %}
+                    in your bag.
                 </p>
             </div>
         </div>
@@ -67,13 +73,13 @@
                     <div class="table-responsive">
                         <table class="table table-sm table-striped table-borderless">
                             <thead>
-                                <tr>
-                                <th scope="col">Product:</th>
-                                <th scope="col"></th>
-                                <th scope="col">Price:</th>
-                                <th scope="col">Quantity:</th>
-                                <th scope="col">Subtotal:</th>
-                                <th scope="col"></th>
+                                <tr class="text-uppercase">
+                                    <th scope="col">Product:</th>
+                                    <th scope="col"></th>
+                                    <th scope="col">Price:</th>
+                                    <th scope="col">Quantity:</th>
+                                    <th scope="col">Subtotal:</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,7 +101,7 @@
                                         <p>£{{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p><i class="fas fa-times-circle fa-lg"></i></p>
+                                        <a href="#" class="text-decoration-none text-dark"><i class="fas fa-times-circle fa-lg"></i></a>
                                     </td>
                                 </tr>
                                 {% endfor %}
