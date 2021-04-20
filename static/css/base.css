@@ -52,9 +52,17 @@ body {
     width: 350px;
 }
 
-/* .search-bar-mob {
-    width: 200px;
-} */
+/* Inspired by Code Institute - Boutique Ado */
+.message-container {
+    position: fixed;
+    top: 87px;
+    right: 15px;
+    z-index: 9999;
+}
+
+.toast-container {
+    overflow: visible;
+}
 
 .user-container .list-inline {
     padding: 10px 0px;
@@ -183,6 +191,9 @@ footer {
     font-weight: 700;
 }
 
+.product-image-click {
+    cursor: pointer;
+}
 /* ---------------------------------------------------- SHOPPING BAG TEMPLATE */
 
 .checkout-steps {
