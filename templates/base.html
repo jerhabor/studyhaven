@@ -129,7 +129,20 @@
 
         <!-- Django Messages -->
         {% if messages %}
-            <div class="message container">
+            <div class="message-container">
+                {% for message in messages %}
+                    {% with message.level as level %}
+                        {% if level == 20 %}
+                            {% include 'includes/toasts/info_toast.html' %}
+                        {% elif level == 25 %}
+                            {% include 'includes/toasts/success_toast.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/warning_toast.html' %}
+                        {% else %}
+                            {% include 'includes/toasts/error_toast.html' %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
             </div>
         {% endif %}
 
@@ -255,6 +268,9 @@
 
         <!-- JavaScript to load after the page contents -->
         {% block postload_js %}
+            <script type="text/javascript">
+                $('.toast').toast('show');
+            </script>
         {% endblock %}
     </body>
 
