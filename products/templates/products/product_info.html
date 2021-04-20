@@ -26,9 +26,9 @@
             <div class="col-12 col-md-6 offset-lg-2 col-lg-4">
                 <div class="product-image w-100">
                     {% if product.image %}
-                        <button type="button" class="px-0" data-toggle="modal" data-target="#product-image">
+                        <a class="px-0 product-image-click" data-toggle="modal" data-target="#product-image">
                             <img class="card-img-top img-fluid" src="{{ product.image_url }}" data-target="#product-image" alt="{{ product.name }}">
-                        </button>
+                        </a>
                         <div id="product-image" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
