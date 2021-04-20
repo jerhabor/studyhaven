@@ -79,6 +79,9 @@ TEMPLATES = [
     },
 ]
 
+# Store messages in the site user's session
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 # The following is obtained from the django-allauth documentation:
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
