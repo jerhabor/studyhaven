@@ -5,9 +5,9 @@ from .models import Order
 class checkoutOrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        field = ('full_name', 'email_address',
-                 'phone_number', 'country', 'address_line1',
-                 'address_line2', 'city_or_town', 'postcode',)
+        fields = ('full_name', 'email_address',
+                  'phone_number', 'country', 'address_line1',
+                  'address_line2', 'city_or_town', 'postcode',)
 
     def __init__(self, *args, **kwargs):
         # Taken from Code Institute Boutique Ado
@@ -39,6 +39,6 @@ class checkoutOrderForm(forms.ModelForm):
             """ Assigning above styles to the values in the
             form_input_placeholders dictionary above."""
             self.fields[field].widget.attrs[
-                'form_input_placeholders'] = placeholder
+                'placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
