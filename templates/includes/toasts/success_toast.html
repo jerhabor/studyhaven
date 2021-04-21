@@ -1,11 +1,65 @@
 <div role="alert" class="toast toast-container" data-autohide="false">
-  <div class="toast-header bg-success text-light">
-    <strong class="mr-auto text-light">Success</strong>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true" class="text-white">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body text-dark">
-    Added <strong class="logo-study-text">{{ message }}</strong> to your bag!
-  </div>
+    <!-- TOAST HEADER -->
+    <div class="toast-header bg-success text-light">
+        <strong class="mr-auto text-light">Success!</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true" class="text-white">&times;</span>
+        </button>
+    </div>
+    <!-- TOAST BODY -->
+    <div class="toast-body text-dark border border-success">
+        <!-- Success Message -->
+        <div class="row">
+            <div class="col-12">
+                {{ message }}
+            </div>
+        </div>
+        <!-- Shopping Bag Count -->
+        {% if grand_total %}
+        <hr class="my-2">
+        <p class="site-logo mb-0 pt-1">Your bag now has <strong>{{ product_count }}</strong>
+            {% if product_count > 1 %}
+            <span>items:</span>
+            {% else %}
+            <span>item:</span>
+            {% endif %}
+        </p>
+        <!-- Shopping Bag Preview -->
+        <div class="preview-container mb-0">
+            {% for product in bag_products %}
+            <div class="row">
+                <div class="col-3 mb-2 mt-1">
+                    <img class="w-100" src="{{ product.product.image.url }}">
+                </div>
+                <div class="col-9">
+                    <p class="my-0"><strong>{{ product.product.name }}</strong></p>
+                    <p class="my-0 small">Quantity: {{ product.quantity }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Total & Conditonal Warning Banner for Free Delivery -->
+        <div class="row">
+            <div class="col">
+                <strong>
+                    <p class="my-2 text-dark">
+                        Total{% if left_for_free_delivery > 0 %} (excluding delivery){% endif %}:
+                        <span class="float-right">£{{ total_price|floatformat:2 }}</span>
+                    </p>
+                </strong>
+                {% if left_for_free_delivery > 0 %}
+                <p class="p-2 bg-warning shadow-sm text-dark text-center rounded-0 mb-0">
+                    Spend <strong>£{{ left_for_free_delivery }}</strong> more to get free delivery!
+                </p>
+                {% endif %}
+                <a href="{% url 'view_bag' %}" class="rounded-0 btn btn-dark btn-block">
+                    <span class="text-uppercase">View Shopping Bag</span>
+                    <span class="icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 </div>
