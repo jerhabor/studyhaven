@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',  # handles normal logging/sign in
     'allauth.socialaccount',  # handles logging in via social media providers
+    'crispy_forms',  # Django form styling
     'home',  # home app
     'products',  # products app
     'bag',  # shopping bag app
@@ -59,6 +60,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'studyhaven.urls'
 
+CRISPY_TEMPLATE_FORMS = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,7 +77,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # required to access media files using MEDIA_URL
+                'django.template.context_processors.media',
                 'bag.contexts.bag_contents'
+            ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_field',
+                'crispy_forms.templatetags.crispy_forms_tags',
             ],
         },
     },
