@@ -26,6 +26,10 @@ body {
     box-sizing: border-box;
 }
 
+.shopping-basket-icon {
+    position: relative;
+}
+
 #main-nav {
     text-transform: uppercase;
 }
@@ -62,6 +66,14 @@ body {
 
 .toast-container {
     overflow: visible;
+}
+
+.info-toast {
+    border: solid 2px #f5af4c;
+}
+
+.custom-bg-warning {
+    background-color: #f5af4c;
 }
 
 .user-container .list-inline {
@@ -207,6 +219,12 @@ footer {
 
 .remove-product {
     cursor: pointer;
+}
+
+.preview-container {
+    height: 90px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* ---------------------------------------------------- MEDIA QUERIES */

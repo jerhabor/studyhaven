@@ -3,7 +3,7 @@
 {% load static %}
 <!-- Loading extra bag functions including subtotal calculation -->
 {% load bag_extras %}
-
+<!-- Navigation Bar Container -->
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -129,8 +129,8 @@
                                     </td>
                                 </tr>
                                 {% endfor %}
-                                <tr class="table-light">
-                                    <td colspan="5" class="pt-5 text-right">
+                                <tr class="bg-white">
+                                    <td colspan="6" class="pt-5 text-right">
                                         <h6><strong>Bag Total: £{{ total_price|floatformat:2 }}</strong></h6>
                                         <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                                         <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
@@ -142,7 +142,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="5" class="text-right">
+                                    <td colspan="6" class="text-right bg-white">
                                         <a href="{% url 'shop' %}" class="btn btn-outline-dark btn-lg mr-2">
                                             <span class="icon">
                                                 <i class="fas fa-chevron-left"></i>
