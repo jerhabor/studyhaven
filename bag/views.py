@@ -2,11 +2,6 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, HttpResponse, reverse, get_object_or_404
 from products.models import Product
 
-class color:
-   BOLD = '\033[1m'
-   UNDERLINE = '\033[4m'
-   END = '\033[0m'
-
 
 def view_shopping_bag(request):
     """ View to return the shopping bag page for the
