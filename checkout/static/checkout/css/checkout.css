@@ -1,5 +1,31 @@
+/* Styling from Stripe: https://stripe.com/docs/stripe-js
+and Code Institute Boutique Ado */
+
+.StripeElement,
 .stripe-style-input {
     width: 100%;
-    margin-bottom: 10px;
     border: 1px solid #000;
+    font-family: 'sans-serif', sans-serif;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+::placeholder {
+    color: #CFD7DF;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
 }
