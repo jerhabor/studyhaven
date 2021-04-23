@@ -5,6 +5,8 @@ from django.db import models
 from django.db.models import Sum
 from products.models import Product
 
+from decimal import Decimal
+
 
 class Order(models.Model):
 
@@ -21,7 +23,7 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
     order_total = models.DecimalField(
         max_digits=8, decimal_places=2, null=False, default=0)
-    delivery = models.DecimalField(
+    delivery_cost = models.DecimalField(
         max_digits=4, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(
         max_digits=8, decimal_places=2, null=False, default=0)
@@ -35,12 +37,13 @@ class Order(models.Model):
         """ Grand total is aggregated as each product order's
         total is analysed """
 
-        self.order_total = self.each_product.aggregate(Sum('product_order_total'))['product_order_total__sum']
+        self.order_total = self.each_line.aggregate(
+            Sum('product_order_total'))['product_order_total__sum'] or 0
         if self.order_total < settings.THRESHOLD_FOR_FREE_DELIVERY:
-            self.delivery = settings.STANDARD_DELIVERY
+            self.delivery_cost = Decimal(settings.STANDARD_DELIVERY)
         else:
-            self.delivery = 0
-        self.grand_total = self.order_total + self.delivery
+            self.delivery_cost = 0
+        self.grand_total = self.order_total + self.delivery_cost
         self.save()
 
     def save(self, *args, **kwargs):
@@ -54,13 +57,13 @@ class Order(models.Model):
         return self.order_number
 
 
-class eachProductOrder(models.Model):
+class EachLineOrder(models.Model):
     product = models.ForeignKey(
         Product, blank=False, null=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0, null=False, blank=False)
     order = models.ForeignKey(
         Order, blank=False, null=False, on_delete=models.CASCADE,
-        related_name='each_product')
+        related_name='each_line')
     product_order_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False,
         blank=False, editable=False)
