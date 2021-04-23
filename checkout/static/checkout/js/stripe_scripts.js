@@ -48,7 +48,7 @@ card.addEventListener('change', function (event) {
 });
 
 // Handles the submission of the user checkout form
-var checkoutForm = $('#checkout-form');
+var checkoutForm = document.getElementById('checkout-form');
 
 checkoutForm.addEventListener('submit', function(ev) {
     // Prevent the default click event of POST
@@ -79,8 +79,7 @@ checkoutForm.addEventListener('submit', function(ev) {
             $('#pay-button').attr('disabled', false);
         } else {
             if (result.paymentIntent.status === 'succeeded') {
-                console.log(result.paymentIntent)
-                form.submit();
+                checkoutForm.submit();
             }
         }
     });
