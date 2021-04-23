@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+<!-- Loading static files including CSS, fonts and images -->
+{% load static %}
+<!-- Loading extra css for the checkout app only -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+<!-- Navigation Bar Container -->
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 text-center">
+            <h2 class="site-logo">Thank You <i class="fas fa-handshake"></i></h2>
+            <div class="col-12 col-lg-6 offset-lg-3 my-auto">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <div class="text-center small">
+                            <div class="checkout-steps border border-success bg-success text-white"><i class="fas fa-check"></i></div>
+                            <p class="mt-1 text-success"><strong>Bag</strong></p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fas fa-angle-right fa-md text-success"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="text-center small">
+                            <div class="checkout-steps border border-success bg-success text-white"><i class="fas fa-check"></i></div>
+                            <p class="mt-1 text-success"><strong>Info</strong></p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fas fa-angle-right fa-md text-success"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="text-center small">
+                            <div class="checkout-steps border border-success bg-success text-white"><i class="fas fa-check"></i></div>
+                            <p class="mt-1 text-success"><strong>Pay</strong></p>
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fas fa-angle-right fa-md text-success"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <div class="text-center small">
+                            <div class="checkout-steps bg-dark text-white">4</div>
+                            <p class="mt-1"><strong>Done</strong></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="w-50">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="text-center"> Hello, 
+            {% if user.is_authenticated %}
+                {{ user.username }}!<br><br class="d-block d-lg-none">
+            {% else %}
+                guest!<br><br class="d-block d-lg-none">
+            {% endif %}
+            Please find your order details below. A confirmation email will also be sent to <strong>{{ order.email_address }}</strong></p>
+        </div>
+        <div class="col-12 col-lg-6"></div>
+    </div>
+</div>
+{% endblock %}
