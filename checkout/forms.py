@@ -2,7 +2,7 @@ from django import forms
 from .models import Order
 
 
-class checkoutOrderForm(forms.ModelForm):
+class CheckoutOrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('full_name', 'email_address',
