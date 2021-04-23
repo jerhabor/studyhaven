@@ -18,6 +18,8 @@ class StripeWebhookHandler:
         which could occur on either the site server's side or
         the customer's side.
         """
+        intent = event.data.object
+        print(intent)
         return HttpResponse(
             content=f'Unhandled Webhook received: {event["type"]}',
             status=200)

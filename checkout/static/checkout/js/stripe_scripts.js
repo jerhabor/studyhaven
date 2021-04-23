@@ -60,34 +60,75 @@ checkoutForm.addEventListener('submit', function(ev) {
     // Trigger the payment loading overlay
     $('#checkout-form').fadeToggle(100);
     $('#payment-loading-overlay').fadeToggle(100);
-    // Attempt processing payment by defining the clientSecretKey
-    // and payment_method.
-    stripe.confirmCardPayment(clientSecretKey, {
-        payment_method: {
-            card: card,
-        }
-    }).then(function(result) {
-        // Checking if there is an error. If so, a message will
-        // be rendered as above when the user enter incorrect/
-        // invalid card details.
-        if (result.error) {
-            var errorMessageContainer = $('#card-errors');
-            var errorMessage = `
-                <span class="ml-1" role="alert">
-                    <i class="fas fa-exclamation"></i>
-                </span>
-                <span> ${result.error.message}</span>`;
-            $(errorMessageContainer).html(errorMessage);
-            // Fade out the loading overlay
-            $('#checkout-form').fadeToggle(100);
-            $('#payment-loading-overlay').fadeToggle(100);
-            // Re-enable the card element and pay button
-            card.update({'disabled': false});
-            $('#pay-button').attr('disabled', false);
-        } else {
-            if (result.paymentIntent.status === 'succeeded') {
-                checkoutForm.submit();
+    var saveContact = Boolean($('#id-save-contact').attr('checked'));
+    // Due to the use of django's {% csrf_token %} in the form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecretKey,
+        'save_contact': saveContact,
+    };
+    var url = '/checkout/cached_checkout_info/';
+
+    $.post(url, postData).done(function () {
+        // Attempt processing payment by defining the clientSecretKey
+        // and payment_method and store billing & shipping details to the
+        // payment intent for the webhook handlers.
+        stripe.confirmCardPayment(clientSecretKey, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    // Use trim() to remove any excess whitespace
+                    name: $.trim(checkoutForm.full_name.value),
+                    email: $.trim(checkoutForm.email_address.value),
+                    phone: $.trim(checkoutForm.phone_number.value),
+                    address:{
+                        line1: $.trim(checkoutForm.address_line1.value),
+                        line2: $.trim(checkoutForm.address_line2.value),
+                        city: $.trim(checkoutForm.city_or_town.value),
+                        country: $.trim(checkoutForm.country.value),
+                    },
+                },
+            },
+            shipping: {
+                name: $.trim(checkoutForm.full_name.value),
+                phone: $.trim(checkoutForm.phone_number.value),
+                address:{
+                    line1: $.trim(checkoutForm.address_line1.value),
+                    line2: $.trim(checkoutForm.address_line2.value),
+                    city: $.trim(checkoutForm.city_or_town.value),
+                    postal_code: $.trim(checkoutForm.postcode.value),
+                    country: $.trim(checkoutForm.country.value),
+                },
+            },
+        }).then(function(result) {
+            // Checking if there is an error. If so, a message will
+            // be rendered as above when the user enter incorrect/
+            // invalid card details.
+            if (result.error) {
+                var errorMessageContainer = $('#card-errors');
+                var errorMessage = `
+                    <span class="ml-1" role="alert">
+                        <i class="fas fa-exclamation"></i>
+                    </span>
+                    <span> ${result.error.message}</span>`;
+                $(errorMessageContainer).html(errorMessage);
+                // Fade out the loading overlay
+                $('#checkout-form').fadeToggle(100);
+                $('#payment-loading-overlay').fadeToggle(100);
+                // Re-enable the card element and pay button
+                card.update({'disabled': false});
+                $('#pay-button').attr('disabled', false);
+            } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                    checkoutForm.submit();
+                }
             }
-        }
+        });
+    }).fail(function () {
+        // If failed, then the error django message will be displayed
+        // to the user/customer after page reload from the view, without
+        // them being charged.
+        location.reload();
     });
 });
