@@ -127,15 +127,15 @@
                 </fieldset>
                 <fieldset class="px-3">
                     <legend class="fieldset-label text-dark w-auto">Shipping Address</legend>
+                    {{ form.country | as_crispy_field }}
                     {{ form.address_line1 | as_crispy_field }}
                     {{ form.address_line2 | as_crispy_field }}
                     {{ form.city_or_town | as_crispy_field }}
                     {{ form.postcode | as_crispy_field }}
-                    {{ form.country | as_crispy_field }}
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
                             <label class="form-check-label" for="save-contact">Save shipping information to my profile</label>
-                            <input class="form-check-input mr-0" type="checkbox" id="save-contact" name="save-contact" checked>
+                            <input class="form-check-input mr-0" type="checkbox" id="id-save-contact" name="save-contact" checked>
                         {% else %}
                             <label class="form-check-label" for="save-contact">
                                 <a class="text-info" href="{% url 'account_signup' %}">Register an account</a> or 
