@@ -5,6 +5,7 @@ and Code Institute Boutique Ado */
 .stripe-style-input {
     width: 100%;
     border: 1px solid #000;
+    border-radius: 3px;
     font-family: 'sans-serif', sans-serif;
     margin-bottom: 10px;
     box-sizing: border-box;
@@ -17,7 +18,7 @@ and Code Institute Boutique Ado */
 }
 
 ::placeholder {
-    color: #CFD7DF;
+    color: #CFD7DF !important;
 }
 
 .StripeElement--focus,
