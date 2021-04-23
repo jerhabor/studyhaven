@@ -53,11 +53,15 @@ var checkoutForm = document.getElementById('checkout-form');
 checkoutForm.addEventListener('submit', function(ev) {
     // Prevent the default click event of POST
     ev.preventDefault(); 
-    // Instead execute the code below by first disabling
-    // the card element and button to prevent any multiple
-    // attempts.
+    // Instead firstly disable the stripe card element
+    // and pay button to prevent any multiple attempts.
     card.update({'disabled': true});
     $('#pay-button').attr('disabled', true);
+    // Trigger the payment loading overlay
+    $('#checkout-form').fadeToggle(100);
+    $('#payment-loading-overlay').fadeToggle(100);
+    // Attempt processing payment by defining the clientSecretKey
+    // and payment_method.
     stripe.confirmCardPayment(clientSecretKey, {
         payment_method: {
             card: card,
@@ -74,6 +78,9 @@ checkoutForm.addEventListener('submit', function(ev) {
                 </span>
                 <span> ${result.error.message}</span>`;
             $(errorMessageContainer).html(errorMessage);
+            // Fade out the loading overlay
+            $('#checkout-form').fadeToggle(100);
+            $('#payment-loading-overlay').fadeToggle(100);
             // Re-enable the card element and pay button
             card.update({'disabled': false});
             $('#pay-button').attr('disabled', false);
