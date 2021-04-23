@@ -31,7 +31,9 @@ def checkoutOrder(request):
 
     # Incase developer has forgotten to set Stripe publishable key in enviroment
     if not stripe_publishable_key:
-        messages.warning(request, 'No Stripe Publishable Key was detected in your environment variables')
+        messages.warning(
+            request, 'No Stripe Publishable Key was detected \
+                in your environment variables')
 
     checkout_order_form = checkoutOrderForm()
     template = 'checkout/checkout.html'
