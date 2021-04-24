@@ -5,6 +5,9 @@ from django.db import models
 from django.db.models import Sum
 from products.models import Product
 
+# In order to access the two letter country code for the forms to be processed by Stripe:
+from django_countries.fields import CountryField
+
 from decimal import Decimal
 
 
@@ -14,11 +17,11 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email_address = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
-    country = models.CharField(max_length=40, null=False, blank=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
     address_line1 = models.CharField(max_length=90, null=False, blank=False)
     address_line2 = models.CharField(max_length=90, blank=True)
     city_or_town = models.CharField(max_length=50, null=False, blank=False)
-    postcode = models.CharField(max_length=10, blank=True)
+    postcode = models.CharField(max_length=10, null=False, blank=False)
     order_date = models.DateTimeField(auto_now_add=True)
     order_total = models.DecimalField(
         max_digits=8, decimal_places=2, null=False, default=0)

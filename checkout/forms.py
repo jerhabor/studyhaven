@@ -20,25 +20,25 @@ class CheckoutOrderForm(forms.ModelForm):
             'full_name': 'Full Name',
             'email_address': 'Email Address',
             'phone_number': 'Phone Number',
-            'country': 'Country',
             'address_line1': 'Address Line 1',
             'address_line2': 'Address Line 2',
             'city_or_town': 'Town/City',
-            'postcode': 'Postal Code',
+            'postcode': 'Zip/Postal Code',
         }
 
         # Cursor to start on Full Name input field when page loads
         self.fields['full_name'].widget.attrs['autofocus'] = True
         # Custom CSS Django Styling
         for field in self.fields:
-            if self.fields[field].required:
-                placeholder = f'{form_input_placeholders[field]} *'
-            else:
-                placeholder = form_input_placeholders[field]
+            if field != 'country':
+                if self.fields[field].required:
+                    placeholder = f'{form_input_placeholders[field]} *'
+                else:
+                    placeholder = form_input_placeholders[field]
 
-            """ Assigning above styles to the values in the
-            form_input_placeholders dictionary above."""
-            self.fields[field].widget.attrs[
-                'placeholder'] = placeholder
+                """ Assigning above styles to the values in the
+                form_input_placeholders dictionary above."""
+                self.fields[field].widget.attrs[
+                    'placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
