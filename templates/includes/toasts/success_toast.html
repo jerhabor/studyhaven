@@ -15,7 +15,7 @@
             </div>
         </div>
         <!-- Shopping Bag Count -->
-        {% if grand_total %}
+        {% if grand_total and not on_my_profile %}
         <hr class="my-2">
         <p class="site-logo mb-0 pt-1">Your bag now has <strong>{{ product_count }}</strong>
             {% if product_count > 1 %}
