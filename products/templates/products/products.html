@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-4">
                     {% for product in shop %}
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="card h-100 mx-3">
@@ -87,22 +87,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 d-sm-none mb-2">
+                        <div class="col-12 d-sm-none my-2">
                             <hr>
                         </div>
                         <!-- From the Code Institute Boutique Ado Tutorial -->
                         {% if forloop.counter|divisibleby:2 %}
-                        <div class="col-12 d-none d-sm-block d-lg-none mb-2">
+                        <div class="col-12 d-none d-sm-block d-lg-none my-2">
                             <hr>
                         </div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:3 %}
-                        <div class="col-12 d-none d-lg-block d-xl-none mb-2">
+                        <div class="col-12 d-none d-lg-block d-xl-none my-2">
                             <hr>
                         </div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:4 %}
-                        <div class="col-12 d-none d-xl-block mb-2">
+                        <div class="col-12 d-none d-xl-block my-2">
                             <hr>
                         </div>
                         {% endif %}
