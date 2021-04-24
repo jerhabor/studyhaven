@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+<!-- Loading static files including CSS, fonts and images -->
+{% load static %}
+<!-- Loading extra css for the profile app only -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+<!-- Navigation Bar Container -->
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 text-center">
+            <h2 class="site-logo">My Profile</h2>
+            <hr class="w-50">
+        </div>
+    </div>
+
+</div>
+{% endblock %}
