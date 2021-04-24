@@ -7,7 +7,7 @@ and Code Institute Boutique Ado */
     width: 100%;
     border: 1px solid #000;
     border-radius: 3px;
-    font-family: 'sans-serif', sans-serif;
+    font-family: 'Barlow', sans-serif;
     margin-bottom: 10px;
     box-sizing: border-box;
     height: 40px;
@@ -19,7 +19,7 @@ and Code Institute Boutique Ado */
 }
 
 ::placeholder {
-    color: #CFD7DF !important;
+    color: #aab7c4 !important;
 }
 
 .StripeElement--focus,
@@ -38,7 +38,7 @@ select, select option {
 
 select:invalid,
 select option[value=""] {
-    color: #CFD7DF !important;
+    color: #aab7c4 !important;
     padding-left: 7px;
 }
 

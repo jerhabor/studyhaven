@@ -9,7 +9,13 @@
 var stripePublishableKey = $('#id_stripe_publishable_key').text().slice(1, -1);
 var clientSecretKey = $('#id_client_secret_key').text().slice(1, -1);
 var stripe = Stripe(stripePublishableKey);
-var elements = stripe.elements();
+var elements = stripe.elements({
+    fonts: [
+        {
+            cssSrc: 'https://fonts.googleapis.com/css2?family=Barlow&display=swap'
+        }
+    ]
+});
 var style = {
     base: {
         color: '#000',
@@ -17,7 +23,7 @@ var style = {
         fontFamily: '"Barlow", sans-serif',
         fontSmoothing: 'antialiased',
         '::placeholder': {
-            color: '#CFD7DF',
+            color: '#aab7c4',
         },
     },
     invalid: {
