@@ -323,3 +323,7 @@ footer {
 .allauth-form-inner-content a {
 	color: #17a2b8; /* text-info colour hex */
 }
+
+.allauth-form-inner-content a.btn-outline-dark {
+    color: #343a40;
+}
