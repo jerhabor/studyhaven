@@ -10,7 +10,6 @@ from decimal import Decimal
 
 class Order(models.Model):
 
-    # Inspired by Boutique Ado
     order_number = models.CharField(max_length=32, null=False, editable=False)
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email_address = models.EmailField(max_length=254, null=False, blank=False)
@@ -27,6 +26,13 @@ class Order(models.Model):
         max_digits=4, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(
         max_digits=8, decimal_places=2, null=False, default=0)
+
+    """ Need to save the original bag items on order in the event of
+    buying during a sale for instance, and buying the same item(s) another
+    time when there is no longer a sale. """
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pi_id = models.CharField(
+        max_length=254, null=False, blank=False, default='')
 
     def order_number_generator(self):
         """ Generate a random string of 32 characters
