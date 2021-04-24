@@ -146,11 +146,12 @@
                 </fieldset>
                 <fieldset class="px-3">
                     <legend class="fieldset-label text-dark w-auto">Payment</legend>
-                    <!-- Stripe card Element -->
+                    <!-- Stripe Card Element -->
                     <div class="mb-3" id="stripe-card"></div>
-
                     <!-- Form Errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    <!-- Client Secret -->
+                    <input type="hidden" name="client_secret" value="{{ client_secret }}">
                 </fieldset>
                 <div class="submit-button text-right mt-5 mb-2">
                     <a href="{% url 'view_bag' %}" class="btn btn-outline-dark btn-lg mr-2">

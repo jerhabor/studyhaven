@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_POST
 from django.conf import settings
 from django.contrib import messages
@@ -51,7 +52,12 @@ def checkout_order(request):
         }
         checkout_order_form = CheckoutOrderForm(form_data)
         if checkout_order_form.is_valid():
-            order = checkout_order_form.save()
+            # Prevent multiple save events by disallowing the first one
+            order = checkout_order_form.save(commit=False)
+            pi_id = request.POST.get('client_secret').split('_secret')[0]
+            order.original_bag = json.dumps(shopping_bag)
+            order.stripe_pi_id = pi_id
+            order.save()
             for product_id, product_data in shopping_bag.items():
                 try:
                     product = Product.objects.get(id=product_id)
@@ -63,8 +69,8 @@ def checkout_order(request):
                     each_line_order.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "We were unable to find one of the products in your bag."
-                        "Please contact us for assistance!")
+                        "We were unable to find one of the products in your bag. \
+                            Please contact us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_shopping_bag'))
