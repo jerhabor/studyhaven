@@ -153,13 +153,15 @@
                     <!-- Client Secret -->
                     <input type="hidden" name="client_secret" value="{{ client_secret }}">
                 </fieldset>
-                <div class="submit-button text-right mt-5 mb-2">
-                    <a href="{% url 'view_bag' %}" class="btn btn-outline-dark btn-lg mr-2">
+                <div class="submit-button text-center text-md-right mt-4 mb-1 px-3">
+                    <!-- Return to Shopping Bag Button -->
+                    <a href="{% url 'view_bag' %}" class="btn btn-outline-dark btn-lg mr-0 mb-2 mr-sm-2 mb-sm-0">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="text-uppercase">Return to bag</span>
                     </a>
+                    <!-- Complete Payment Button -->
                     <button id="pay-button" class="btn btn-dark btn-lg">
                         <span class="text-uppercase">Complete Payment</span>
                         <span class="icon">
@@ -167,10 +169,14 @@
                         </span>
                     </button>
                 </div>
+                <div class="text-center text-md-right text-danger mb-4 px-3">
+                    <p class=" mb-1 small font-weight-bold">Your card will be billed £{{ grand_total }}</p>
+                </div>
             </form>
         </div>
     </div>
 </div>
+<!-- Loading Overlay During Payment -->
 <div id="payment-loading-overlay">
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>
