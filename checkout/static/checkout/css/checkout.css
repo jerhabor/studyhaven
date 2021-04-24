@@ -39,7 +39,8 @@ select, select option {
 select:invalid,
 select option[value=""] {
     color: #aab7c4 !important;
-    padding-left: 7px;
+    padding-left: 8px;
+    padding-top: 8px;
 }
 
 
