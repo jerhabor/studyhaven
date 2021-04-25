@@ -12,3 +12,8 @@
     color: #aab7c4;
     padding-left: 8px !important;
 }
+
+.order-history-container {
+    max-height: 591px; /* Height of Profile Form & Button combined */
+    overflow-y: auto;
+}
