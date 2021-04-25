@@ -65,7 +65,7 @@ input[name='q']::placeholder {
 /* Inspired by Code Institute - Boutique Ado */
 .message-container {
     position: fixed;
-    top: 87px;
+    top: 75px;
     right: 15px;
     z-index: 9999;
 }
