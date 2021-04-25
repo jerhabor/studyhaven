@@ -1,8 +1,11 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
+from django.utils import formats
 
 from .models import UserProfile
 from .forms import UserProfileForm
+
+from checkout.models import Order
 
 
 def user_profile(request):
@@ -25,9 +28,31 @@ def user_profile(request):
 
     template = 'profiles/profile.html'
     context = {
+        'on_my_profile': True,
         'form': form,
         'order_history': order_history,
-        'on_my_profile': True,
+    }
+
+    return render(request, template, context)
+
+
+def order_history_table(request, order_number):
+    # Get the order model first
+    order = get_object_or_404(Order, order_number=order_number)
+
+    date_of_order = order.order_date
+    formatted_datetime = formats.date_format(date_of_order, "SHORT_DATETIME_FORMAT")
+
+    messages.info(request, (
+        f'Please note that you have already made this order with \
+            order number: {order_number}. A confirmation email had \
+                been sent to {order.email_address} on {formatted_datetime}'
+    ))
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'came_from_profile': True,
+        'order': order,
     }
 
     return render(request, template, context)
