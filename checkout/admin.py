@@ -10,10 +10,10 @@ class eachProductOrderManagement(admin.TabularInline):
 class OrderManagement(admin.ModelAdmin):
     inlines = (eachProductOrderManagement,)
 
-    fields = ('order_number', 'full_name', 'email_address',
-              'phone_number', 'country', 'address_line1',
-              'address_line2', 'city_or_town', 'postcode',
-              'order_date', 'order_total', 'delivery_cost',
+    fields = ('user_profile', 'order_number', 'full_name',
+              'email_address', 'phone_number', 'country',
+              'address_line1', 'address_line2', 'city_or_town',
+              'postcode', 'order_date', 'order_total', 'delivery_cost',
               'grand_total', 'original_bag', 'stripe_pi_id',)
 
     readonly_fields = ('order_date', 'order_number', 'delivery_cost',
