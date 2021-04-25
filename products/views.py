@@ -79,9 +79,9 @@ def add_product(request):
     """ A view to allow StudyHaven superuser and owner to add
     a product to the shop. """
     if request.method == 'POST':
-        form = ProductAdminForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+        admin_form = ProductAdminForm(request.POST, request.FILES)
+        if admin_form.is_valid():
+            admin_form.save()
             messages.success(
                 request, 'Product successfully added to the StudyHaven shop!')
             return redirect(reverse('add_product'))
@@ -90,10 +90,38 @@ def add_product(request):
                 request, 'Unable to add product to the StudyHaven shop. \
                     Please check that the form inputs are valid.')
     else:
-        form = ProductAdminForm()
+        admin_form = ProductAdminForm()
     template = 'products/product_addition.html'
     context = {
-        'form': form,
+        'form': admin_form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_product(request, product_id):
+    """ A view to allow StudyHaven superuser and owner to edit
+    a product already in the shop. """
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        admin_form = ProductAdminForm(
+            request.POST, request.FILES, instance=product)
+        if admin_form.is_valid():
+            admin_form.save()
+            messages.success(
+                request, f'You have successfully updated: {product.name}.')
+            return redirect(reverse('product_info', args=[product.id]))
+        else:
+            messages.error(request, 'Unable to add product to the StudyHaven shop. \
+                    Please check that the form inputs are valid.')
+    else:
+        admin_form = ProductAdminForm(instance=product)
+        messages.info(request, f'You are now editing: {product.name}')
+    template = 'products/product_editing.html'
+    context = {
+        'product': product,
+        'form': admin_form,
     }
 
     return render(request, template, context)
