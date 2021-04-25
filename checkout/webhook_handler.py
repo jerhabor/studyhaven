@@ -2,6 +2,7 @@ from django.http import HttpResponse
 
 from .models import Order, EachLineOrder
 from products.models import Product
+from profiles.models import UserProfile
 
 import json
 import time
@@ -48,6 +49,26 @@ class StripeWebhookHandler:
             if value == "":
                 shipping_details.address[field] = None
 
+        """ Need to handle updating profile information here in the webhook
+        handler in the event that the app views fail """
+        user_profile = None
+        user_username = intent.metadata.username
+        if user_username != 'AnonymousUser':
+            user_profile = UserProfile.objects.get(
+                user__username=user_username)
+            # Check if 'save information' box is checked
+            # If so, then save to profile
+            if save_contact:
+                user_profile.default_full_name = shipping_details.name,
+                user_profile.default_email_address = billing_details.email,
+                user_profile.default_phone_number = shipping_details.phone
+                user_profile.default_country = shipping_details.address.country
+                user_profile.default_address_line1 = shipping_details.address.line1
+                user_profile.default_address_line2 = shipping_details.address.line2
+                user_profile.default_city_or_town = shipping_details.address.city
+                user_profile.default_postcode = shipping_details.address.postal_code
+                user_profile.save()
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -79,6 +100,7 @@ class StripeWebhookHandler:
             order = None
             try:
                 order = Order.objects.create(
+                    user_profile=user_profile,
                     full_name=shipping_details.name,
                     email_address=billing_details.email,
                     phone_number=shipping_details.phone,
