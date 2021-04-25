@@ -50,8 +50,40 @@
         </div>
         <div class="col-12 col-lg-6 mt-5 mt-lg-0">
             <h4 class="mb-2 px-3">Order History</h4>
-            <div class="px-3">
-                {{ order_history }}
+            <div class="px-3 table-responsive order-history-container">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr>
+                            <th>Order Number</th>
+                            <th class="w-25">Date</th>
+                            <th>Products</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in order_history %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'order_history' order.order_number %}"
+                                    title="{{ order.order_number }}">
+                                        {{ order.order_number|truncatechars:12 }}
+                                    </a>
+                                </td>
+                                <td>{{ order.order_date }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for product in order.each_line.all %}
+                                            <li class="small">
+                                                {{ product.quantity }} x {{ product.product.name }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>£{{ order.grand_total }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
