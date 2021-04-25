@@ -60,13 +60,16 @@
         <div class="row">
             <div class="col-12">
                 <p class="text-center">
-                    You have
-                    {% if product_count > 1 or product_count == 0 %}
-                        <strong> {{ product_count }} </strong>items 
-                    {% else %}
-                        <strong> {{ product_count }} </strong>item 
+                    {% if product_count >= 1 %}
+                        You have
+                        <strong> {{ product_count }} </strong>
+                        {% if product_count > 1 %}
+                            items
+                        {% else %}
+                            item
+                        {% endif %}
+                        in your bag.
                     {% endif %}
-                    in your bag.
                 </p>
             </div>
         </div>
@@ -89,7 +92,11 @@
                                 {% for item in bag_products %}
                                 <tr>
                                     <td class="w-25 p-3">
-                                        <img class="img-fluid" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                                    {% if item.product.image %}
+                                        <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                    {% else %}
+                                        <img class="w-100" src="{{ MEDIA_URL }}no-image.jpg" alt="{{ item.product.name }}">
+                                    {% endif %}
                                     </td>
                                     <td class="py-3">
                                         <p><strong>{{ item.product.name }}</strong></p>
@@ -162,7 +169,7 @@
                     </div>
                 {% else %}
                     <div class="text-center mb-5">
-                        <p class="lead text-center">Your bag is empty!</p>
+                        <h4 class="text-center mb-4">Your bag is empty!</h4>
                         <a href="{% url 'shop' %}" class="btn btn-dark btn-lg">
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
