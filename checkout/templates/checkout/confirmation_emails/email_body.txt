@@ -1,0 +1,25 @@
+Hello {{ order.full_name }},
+
+Thank you for order! We are glad that we were able to assist in supplying for your academic needs.
+Below is a confirmation for order number: {{ order.order_number }} made on {{ order.order_date }}.
+
+Order Total: {{ order.order_total|floatformat:2 }}
+Delivery Cost: {{ order.delivery_cost }}
+Grand Total: {{ order.grand_total|floatformat:2 }}
+
+Your order will be shipped to:
+
+{{ order.address_line1 }}
+{{ order.city_or_town }}
+{{ order.postcode }}
+{{ order.country }}
+
+Our records show that your contact number is {{ order.phone_number }}.
+
+If you have any questions, feel free to contact us at {{ studyhaven_email }}.
+
+Wishing you all the best in your studies!
+
+Sincererly,
+
+StudyHaven
