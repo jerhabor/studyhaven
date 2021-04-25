@@ -7,6 +7,8 @@ from django.contrib import messages
 from .forms import CheckoutOrderForm
 from .models import Order, EachLineOrder
 from products.models import Product
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
 
 import stripe
@@ -97,7 +99,27 @@ def checkout_order(request):
             amount=stripe_charge,
             currency=settings.STRIPE_CURRENCY,
         )
-        checkout_order_form = CheckoutOrderForm()
+
+        """ A conditional statement to handle prefilling the form
+        with the contact details that the user updated from their
+        user profile. """
+        if request.user.is_authenticated:
+            try:
+                user_profile = UserProfile.objects.get(user=request.user)
+                checkout_order_form = CheckoutOrderForm(initial={
+                    'full_name': user_profile.default_full_name,
+                    'email_address': user_profile.default_email_address,
+                    'phone_number': user_profile.default_phone_number,
+                    'country': user_profile.default_country,
+                    'postcode': user_profile.default_postcode,
+                    'city_or_town': user_profile.default_city_or_town,
+                    'address_line1': user_profile.default_address_line1,
+                    'address_line2': user_profile.default_address_line2,
+                })
+            except UserProfile.DoesNotExist:
+                checkout_order_form = CheckoutOrderForm()
+        else:
+            checkout_order_form = CheckoutOrderForm()
 
     # Incase no Stripe publishable key is in environment
     if not stripe_publishable_key:
@@ -120,6 +142,32 @@ def checkout_success(request, order_number):
     order attempt """
     save_contact = request.session.get('save_contact')
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        # Render the customer's profile as they make an order
+        profile_user = UserProfile.objects.get(user=request.user)
+        order.user_profile = profile_user
+        order.save()
+
+        # Saving the customers detail if they checked the box
+        if save_contact:
+            profile_details = {
+                'default_full_name': order.full_name,
+                'default_email_address': order.email_address,
+                'default_phone_number': order.phone_number,
+                'default_country': order.country,
+                'default_address_line1': order.address_line1,
+                'default_address_line2': order.address_line2,
+                'default_city_or_town': order.city_or_town,
+                'default_postcode': order.postcode,
+            }
+            user_profile_form = UserProfileForm(
+                profile_details, instance=profile_user)
+            # Save to customer's profile only if their form inputs are valid
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
+    # Send a success toast message on the UI that the purchase was successful
     messages.success(request, f'Your order has been processed! \
         Here is your order number: {order_number}. A confirmation \
         email will be sent to {order.email_address} shortly.')
