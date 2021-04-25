@@ -15,26 +15,28 @@
         <div class="row mt-3">
             <div class="col-12 text-center">
                 <p class="text-center">
-                    <a href="{% url 'home' %}" class="mx-1">Home</a> >
-                    <a href="{% url 'shop' %}" class="mx-1">Shop</a> >
+                    <a href="{% url 'home' %}" class="mx-1">Home</a>
+                    <span><i class="fas fa-angle-right"></i></span>
+                    <a href="{% url 'shop' %}" class="mx-1">Shop</a>
+                    <span><i class="fas fa-angle-right"></i></span>
                     <span class="mx-1">{{ product.name }}</span>
                 </p>
                 <hr class="w-50 mt-3 mb-4">
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-12 col-md-6 offset-lg-2 col-lg-4">
                 <div class="product-image w-100">
                     {% if product.image %}
                         <a class="px-0 product-image-click" data-toggle="modal" data-target="#product-image">
-                            <img class="card-img-top img-fluid" src="{{ product.image_url }}" data-target="#product-image" alt="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" data-target="#product-image" alt="{{ product.name }}">
                         </a>
                         <div id="product-image" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        <img src="{{ product.image_url }}" class="img-responsive w-100">
+                                        <img src="{{ product.image.url }}" class="img-responsive w-100">
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +50,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        <img src="{{ product.image_url }}" class="img-responsive">
+                                        <img src="{{ product.image.url }}" class="img-responsive">
                                     </div>
                                 </div>
                             </div>

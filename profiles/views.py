@@ -22,8 +22,8 @@ def user_profile(request):
             messages.success(
                 request, 'Your contact and shipping information \
                     have been updated successfully!')
-
-    form = UserProfileForm(instance=profile)
+    else:
+        form = UserProfileForm(instance=profile)
     order_history = profile.order_history.all()
 
     template = 'profiles/profile.html'

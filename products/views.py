@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 # to allow for search criteria in product name OR description
 from django.db.models import Q, functions
+
 from .models import Product, Category
+from .forms import ProductAdminForm
 
 
 def all_products(request):
@@ -71,3 +73,27 @@ def product_info(request, product_id):
     }
 
     return render(request, 'products/product_info.html', context)
+
+
+def add_product(request):
+    """ A view to allow StudyHaven superuser and owner to add
+    a product to the shop. """
+    if request.method == 'POST':
+        form = ProductAdminForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, 'Product successfully added to the StudyHaven shop!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(
+                request, 'Unable to add product to the StudyHaven shop. \
+                    Please check that the form inputs are valid.')
+    else:
+        form = ProductAdminForm()
+    template = 'products/product_addition.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
