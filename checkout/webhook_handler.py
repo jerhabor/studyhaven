@@ -81,8 +81,8 @@ class StripeWebhookHandler:
             # Check if 'save information' box is checked
             # If so, then save to profile
             if save_contact:
-                user_profile.default_full_name = shipping_details.name,
-                user_profile.default_email_address = billing_details.email,
+                user_profile.default_full_name = shipping_details.name
+                user_profile.default_email_address = billing_details.email
                 user_profile.default_phone_number = shipping_details.phone
                 user_profile.default_country = shipping_details.address.country
                 user_profile.default_address_line1 = shipping_details.address.line1
