@@ -18,15 +18,15 @@ class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     # Keep an order history in the admin regardless of whether user profile
     # has been deleted.
-    user_profile = models.ForeignKey(
-        UserProfile, on_delete=models.SET_NULL, blank=True, null=True,
-        related_name='order_history')
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
+                                     null=True, blank=True,
+                                     related_name='order_history')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email_address = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
     country = CountryField(blank_label='Country *', null=False, blank=False)
     address_line1 = models.CharField(max_length=90, null=False, blank=False)
-    address_line2 = models.CharField(max_length=90, blank=True)
+    address_line2 = models.CharField(max_length=90, null=True, blank=True)
     city_or_town = models.CharField(max_length=50, null=False, blank=False)
     postcode = models.CharField(max_length=10, null=False, blank=False)
     order_date = models.DateTimeField(auto_now_add=True)
