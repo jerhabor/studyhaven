@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+<!-- Loading static files including CSS, fonts and images -->
+{% load static %}
+<!-- Navigation Bar Container -->
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 text-center">
+            <h2 class="site-logo">Product Admin</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 admin-section-title">
+            <h5 class="text-muted">Add a Product</h5>
+        </div>
+        <div class="col-12 col-md-6 product-admin-form">
+            <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="text-right">
+                    <a class="btn btn-outline-dark" href="{% url 'shop' %}">Cancel</a>
+                    <button class="btn btn-dark" type="submit">Add Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
