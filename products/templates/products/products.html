@@ -78,7 +78,15 @@
                                 <div class="card-footer text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="card-text font-weight-bold text-left">£{{ product.price }}</p>
+                                            <p class="card-text font-weight-bold text-left">
+                                                <span>£{{ product.price }}</span>
+                                                {% if request.user.is_superuser %}
+                                                    <span class="small float-right text-right">
+                                                        <a href="{% url 'edit_product' product.id %}" class="text-info">Edit</a><br>
+                                                        <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
+                                                    </span>
+                                                {% endif %}
+                                            </p>
                                             <p class="small">
                                                 <a href="{% url 'shop' %}?category={{ product.category.name }}" class="text-muted">
                                                     <i class="fas fa-tag"></i> {{ product.category.shop_name }}

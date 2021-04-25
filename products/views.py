@@ -81,10 +81,10 @@ def add_product(request):
     if request.method == 'POST':
         admin_form = ProductAdminForm(request.POST, request.FILES)
         if admin_form.is_valid():
-            admin_form.save()
+            product = admin_form.save()
             messages.success(
-                request, 'Product successfully added to the StudyHaven shop!')
-            return redirect(reverse('add_product'))
+                request, f'You have successfully added: {product.name} to the StudyHaven shop!')
+            return redirect(reverse('product_info', args=[product.id]))
         else:
             messages.error(
                 request, 'Unable to add product to the StudyHaven shop. \
@@ -125,3 +125,11 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+def delete_product(request, product_id):
+    """ A view to delete the product from the StudyHaven shop. """
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, 'Product has now been deleted!')
+    return redirect(reverse('shop'))
