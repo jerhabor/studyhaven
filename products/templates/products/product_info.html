@@ -42,26 +42,42 @@
                             </div>
                         </div>
                     {% else %}
-                        <button type="button" data-toggle="modal" data-target="#product-image">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.jpg" alt="{{ product.name }}">
-                        </button>
-                        <div id="product-image" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <img src="{{ product.image.url }}" class="img-responsive">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.jpg" alt="{{ product.name }}">
                     {% endif %}
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-info-container">
                     <h5 class="pt-2">{{ product.name }}</h5>
-                    <p class="font-weight-bold text-left">£{{ product.price }}</p>
+                    <p class="font-weight-bold text-left">
+                        £{{ product.price }}
+                        {% if request.user.is_superuser %}
+                            <span class="small text-uppercase float-right text-right">
+                                <a href="{% url 'edit_product' product.id %}" class="text-info mr-2">Edit</a>
+                                <a data-target="#deleteModal" data-toggle="modal" class="text-danger" href="#deleteModal">Delete</a>
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you would like to delete <strong>{{ product.name }}</strong>? Please note that this cannot be undone!
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                <a type="button" class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        {% endif %}
+                    </p>
                     <p class="small">
                         <a href="{% url 'shop' %}?category={{ product.category.name }}" class="text-muted">
                             <i class="fas fa-tag"></i> {{ product.category.shop_name }}

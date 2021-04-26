@@ -81,10 +81,30 @@
                                             <p class="card-text font-weight-bold text-left">
                                                 <span>£{{ product.price }}</span>
                                                 {% if request.user.is_superuser %}
-                                                    <span class="small float-right text-right">
-                                                        <a href="{% url 'edit_product' product.id %}" class="text-info">Edit</a><br>
-                                                        <a href="{% url 'delete_product' product.id %}" class="text-danger">Delete</a>
-                                                    </span>
+                                                <span class="small text-uppercase float-right text-right">
+                                                    <a href="{% url 'edit_product' product.id %}" class="text-info">Edit</a><br>
+                                                    <a data-target="#deleteModal{{ product.id }}" data-toggle="modal" class="text-danger" href="#deleteModal{{ product.id }}">Delete</a>
+                                                    <!-- Delete Modal -->
+                                                    <div class="modal fade" id="deleteModal{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title">Confirm Delete</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Are you sure you would like to delete <strong>{{ product.name }}</strong>? Please note that this cannot be undone!
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                    <a type="button" class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </span>
                                                 {% endif %}
                                             </p>
                                             <p class="small">
