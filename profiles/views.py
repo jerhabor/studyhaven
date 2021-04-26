@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.utils import formats
 
@@ -8,6 +9,7 @@ from .forms import UserProfileForm
 from checkout.models import Order
 
 
+@login_required
 def user_profile(request):
     """ A view to display a registered user's profile """
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -36,12 +38,14 @@ def user_profile(request):
     return render(request, template, context)
 
 
+@login_required
 def order_history_table(request, order_number):
     # Get the order model first
     order = get_object_or_404(Order, order_number=order_number)
 
     date_of_order = order.order_date
-    formatted_datetime = formats.date_format(date_of_order, "SHORT_DATETIME_FORMAT")
+    formatted_datetime = formats.date_format(
+        date_of_order, "SHORT_DATETIME_FORMAT")
 
     messages.info(request, (
         f'Please note that you have already made this order with \
