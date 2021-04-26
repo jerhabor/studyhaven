@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'checkout',  # checkout app
     'profiles',  # user profile app
     'tutoring',  # tutoring app
+    'faqs',  # faqs app
 ]
 
 MIDDLEWARE = [
