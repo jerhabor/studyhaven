@@ -53,7 +53,7 @@
                         £{{ product.price }}
                         {% if request.user.is_superuser %}
                             <span class="small text-uppercase float-right text-right">
-                                <a href="{% url 'edit_product' product.id %}" class="text-info mr-2">Edit</a>
+                                <a href="{% url 'edit_product' product.id %}" class="text-info">Edit</a><span class="mx-2">|</span>
                                 <a data-target="#deleteModal" data-toggle="modal" class="text-danger" href="#deleteModal">Delete</a>
                                 <!-- Delete Modal -->
                                 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
