@@ -233,6 +233,19 @@ footer {
     overflow-x: hidden;
 }
 
+/* ---------------------------------------------------- FAQS TEMPLATE */
+.accordion-title {
+    width: 90%;
+    text-align: left;
+    float: left;
+}
+
+.accordion-arrow {
+    width: 10%;
+    text-align: right;
+    float: right;
+}
+
 /* ---------------------------------------------------- MEDIA QUERIES */
 
 @media (min-width: 1200px) {
