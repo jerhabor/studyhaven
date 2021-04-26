@@ -93,11 +93,11 @@
                                     {% if request.user.is_superuser %}
                                         <a href="{% url 'add_product' %}" class="dropdown-item">Product Admin</a>
                                     {% endif %}
-                                        <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                                    {% else %}
-                                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                    <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                {% else %}
+                                    <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                                    <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                                 {% endif %}
                             </div>
                         </li>
@@ -157,67 +157,63 @@
         {% endblock %}
 
         <!-- Page Footer -->
-        
-        <!-- Footer -->
         <footer class="page-footer font-small pt-4 text-white">
-
             <!-- Footer Links -->
             <div class="container-fluid text-center text-md-left">
-
-                <!-- Grid row -->
                 <div class="row">
-
-                    <!-- Grid column -->
                     <div class="col-md-6 mt-md-0 mt-3">
-
                         <!-- Content -->
                         <h5 class="text-uppercase">Contact Us</h5>
                         <p>info@studyhaven.com</p>
-
                     </div>
-                    <!-- Grid column -->
-
                     <hr class="clearfix w-100 d-md-none pb-3">
-
-                    <!-- Grid column -->
                     <div class="col-md-3 mb-md-0 mb-3">
-
-                        <!-- Links -->
+                        <!-- Categories Footer Links -->
                         <h5 class="text-uppercase">Shop</h5>
-
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#!" class="footer-link">11+ Workbooks</a>
+                                <a href="{% url 'shop' %}?category=11plus-workbooks" class="footer-link">11+ Workbooks</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-link">KS2 Workbooks</a>
+                                <a href="{% url 'shop' %}?category=ks2-workbooks" class="footer-link">KS2 Workbooks</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-link">GCSE Workbooks</a>
+                                <a href="{% url 'shop' %}?category=gcse-workbooks" class="footer-link">GCSE Workbooks</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-link">A-Level Workbooks</a>
+                                <a href="{% url 'shop' %}?category=a-level-workbooks" class="footer-link">A-Level Workbooks</a>
                             </li>
                             <li>
-                                <a href="#!" class="footer-link">Stationery</a>
+                                <a href="{% url 'shop' %}?category=stationery" class="footer-link">Stationery</a>
                             </li>
                         </ul>
-
                     </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
                     <div class="col-md-3 mb-md-0 mb-3">
-
                         <!-- Links -->
                         <h5 class="text-uppercase">Links</h5>
-
                         <ul class="list-unstyled">
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                    <li>
+                                        <a href="{% url 'add_product' %}" class="footer-link">Product Admin</a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <a href="{% url 'profile' %}" class="footer-link">My Profile</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'account_logout' %}" class="footer-link">Logout</a>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a href="{% url 'account_login' %}" class="footer-link">Login</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'account_signup' %}" class="footer-link">Register</a>
+                                </li>
+                            {% endif %}
                             <li>
-                                <a href="#!" class="footer-link">My Account</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="footer-link">FAQs</a>
+                                <a href="{% url 'faqs' %}" class="footer-link">FAQs</a>
                             </li>
                             <li>
                                 <a href="#!" class="footer-link">Privacy Policy</a>
@@ -226,18 +222,14 @@
                                 <a href="#!" class="footer-link">Terms & Conditions</a>
                             </li>
                         </ul>
-
                     </div>
-                    <!-- Grid column -->
-
                 </div>
-                <!-- Grid row -->
                 <div class="row">
                     <div class="col-12 search-container">
                     <form action="{% url 'shop' %}" method="GET">
                         <div class="input-group w-100">
                             <div class="form-outline text-center d-inline-flex">
-                                <input type="text" name="q" class="form-control" placeholder="Search our shop"/>
+                                <input type="text" name="q" class="form-control" id="searchbar" placeholder="Search our shop"/>
                             </div>
                             <div class="input-group-append d-inline-flex">
                                 <button type="submit" class="btn btn-dark form-control">
@@ -248,17 +240,14 @@
                     </form>
                     </div>
                 </div>
-
             </div>
-            <!-- Footer Links -->
-
             <!-- Copyright -->
             <div class="text-center pt-5 pb-3">
                 <h5 class="pb-2">Follow Us!</h5>
-                <a href="#" class="social-media mx-3"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" class="social-media mr-3"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="social-media mr-3"><i class="fab fa-twitter fa-lg"></i></a>
-                <a href="#" class="social-media mr-3"><i class="fab fa-youtube fa-lg"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" class="social-media mx-3"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-media mr-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="https://twitter.com/" target="_blank" class="social-media mr-3"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="https://www.youtube.com/" target="_blank" class="social-media mr-3"><i class="fab fa-youtube fa-lg"></i></a>
             </div>
             <div class="footer-copyright text-center pb-3">
                 © StudyHaven 2021
