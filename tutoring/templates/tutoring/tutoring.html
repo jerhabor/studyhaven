@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+<!-- Navigation Bar Container -->
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 text-center">
+            <h2 class="site-logo">Our Tutoring Services</h2>
+            <hr class="w-50">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 offset-md-3 col-md-6">
+            <p class="text-center">
+                We do both private and group tutoring.<br>All of our sessions are currently held virtually due to the Covid-19 pandemic.<br><br>Payments can only be made during your first consultation with us.<br><br>Click here to book a free 15 minute consultation.
+            </p>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="lead">
+                Unsure of which service to choose?<br>Check out the pros of each type below.
+            </p>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <h4 class="site-logo"><i class="fas fa-user fa-lg mr-2"></i> Private Tutoring</h4>
+            <p class="px-3">The learning pace is dependent on the student as there is more flexibility to the amount that they can learn each session.</p>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+            <h4 class="site-logo"><i class="fas fa-users fa-lg mr-2"></i> Group Tutoring</h4>
+            <p class="px-3">Tutees will be in groups of up to four other students where everyone can engage with each other and help one another.</p>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <p class="lead">Rates per hour</p>
+        </div>
+        <div class="col-12 offset-md-4 col-md-4 table-responsive px-4">
+            <table class="table table-bordered text-center">
+            <thead >
+                <tr>
+                <th>Subject</th>
+                <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11plus</td>
+                    <td>£15</td>
+                </tr>
+                <tr>
+                    <td>KS2</td>
+                    <td>£15</td>
+                </tr>
+                <tr>
+                    <td>GCSE</td>
+                    <td>£20</td>
+                </tr>
+                <tr>
+                    <td>A-Level</td>
+                    <td>£25</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="lead px-3">Need more information?</p>
+            <p>Click here to book a free 15-minute consultation with us.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
