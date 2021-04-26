@@ -131,5 +131,5 @@ def delete_product(request, product_id):
     """ A view to delete the product from the StudyHaven shop. """
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
-    messages.success(request, 'Product has now been deleted!')
+    messages.success(request, f'{product.name} has now been deleted from the StudyHaven shop!')
     return redirect(reverse('shop'))
