@@ -274,6 +274,9 @@ footer {
     align-items: center;
     border-radius: 50%;
 }
+.checkout-steps.done {
+    background-color: #d2544a;
+}
 
 .remove-product {
     cursor: pointer;
