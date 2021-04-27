@@ -9,6 +9,13 @@
 
 body {
     font-family: 'Barlow', sans-serif;
+    background-color: #fffdfa;
+    color: #000;
+}
+
+.normal-text {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
 }
 
 .site-logo {
@@ -24,6 +31,10 @@ body {
     margin-top: 0;
 }
 
+.dropdown-menu .lg-top-nav {
+    background-color: #fdd9cc;
+}
+
 .top-nav {
     background-color: #fdd9cc;
     height: 80px;
@@ -37,8 +48,8 @@ body {
     box-sizing: border-box;
 }
 
-.active {
-    font-weight: 900;
+.active a {
+    color: #d2544a !important;
 }
 
 .shopping-basket-icon {
@@ -69,6 +80,31 @@ body {
 
 .search-container .input-group {
     justify-content: center;
+}
+
+.search-bar-mob {
+    font-family: 'Barlow', sans-serif;
+}
+
+.bg-brand,
+.modal-header,
+.modal-footer {
+    background-color: #fdd9cc;
+}
+
+.user-container .dropdown-menu {
+    background-color: #fdd9cc;
+}
+
+#main-nav a:hover,
+.my-account:hover,
+.nav-link .fa-user:hover,
+.dropdown-menu a:hover {
+    color: #d2544a !important;
+}
+
+.modal-header {
+    font-family: Lovelo;
 }
 
 .form-control.search-bar-web {
@@ -111,6 +147,10 @@ footer {
 .footer-link {
     text-decoration: none;
     color: #000 !important;
+}
+
+footer li:hover {
+    color: #d2544a;
 }
 
 .social-media {
@@ -190,29 +230,6 @@ footer {
 
 #reviews-slides p:first-of-type {
     font-family: 'Barlow', sans-serif;
-}
-
-.back-to-top {
-    border: solid 1px #000;
-    box-sizing: border-box;
-    width: 150px;
-    border-radius: 25px;
-    margin-bottom: 20px;
-    padding: 7px;
-    font-size: 15px;
-}
-
-.back-to-top a {
-    color: #000;
-    text-decoration: none;
-}
-
-.back-to-top:hover {
-    background-color: #808080;
-}
-
-.back-to-top a:hover {
-    color: #fff;
 }
 
 /* ---------------------------------------------------- PRODUCTS TEMPLATE */
@@ -322,9 +339,16 @@ footer {
         background-color: #fdd9cc !important;
     }
 
-    #main-nav a:hover {
-        font-weight: bold;
-        background: none;
+    .nav-icon-text {
+        font-family: Lovelo;
+    }
+
+    .site-brand-text {
+        font-family: Lovelo;
+    }
+
+    .nav-link {
+        color: #000 !important;
     }
 }
 
@@ -343,7 +367,11 @@ footer {
 
     .nav-item .nav-link {
         letter-spacing: 2px;
-        color: #000 !important;
+        color: #000;
+    }
+
+    .nav-item .nav-link .active a {
+        color: #d2544a !important;
     }
 
     .navbar {
@@ -352,11 +380,6 @@ footer {
 
     #main-nav .dropdown-menu {
         background-color: #fdd9cc !important;
-    }
-
-    #main-nav a:hover {
-        font-weight: bold;
-        background: none;
     }
 
     .site-brand-text {

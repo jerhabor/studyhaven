@@ -23,7 +23,7 @@
                 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             <!-- Google Fonts -->
             <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
             <!-- CSS Stylesheet -->
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
@@ -83,12 +83,12 @@
                     <ul class="list-inline text-center ml-auto">
                         <li class="list-inline-item dropdown">
                             <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <div class="text-center">
+                                <div class="text-center my-account">
                                     <div><i class="fas fa-user fa-lg"></i></div>
-                                    <p class="my-0">My Account</p>
+                                    <p class="mt-1 mb-0 small site-brand-text">My Account</p>
                                 </div>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="user-options">
+                            <div class="dropdown-menu site-brand-text bg-brand" aria-labelledby="user-options">
                                 {% if request.user.is_authenticated %}
                                     {% if request.user.is_superuser %}
                                         <a href="{% url 'add_product' %}" class="dropdown-item">Product Admin</a>
@@ -105,11 +105,11 @@
                             <a class="{% if grand_total %}text-bag font-weight-bold{% else %}text-dark{% endif %} nav-link" href="{% url 'view_bag' %}">
                                 <div class="text-center">
                                     <div><i class="fas fa-shopping-basket fa-lg"></i></div>
-                                    <p class="my-0">
+                                    <p class="my-0 site-brand-text">
                                         {% if grand_total %}
-                                            £{{ grand_total|floatformat:2 }}
+                                            <span class="normal-text">£</span>{{ grand_total|floatformat:2 }}
                                         {% else %}
-                                            £0.00
+                                            <span class="normal-text">£</span>0.00
                                         {% endif %}
                                     </p>
                                 </div>
@@ -163,13 +163,13 @@
                 <div class="row">
                     <div class="col-md-6 mt-md-0 mt-3">
                         <!-- Content -->
-                        <h5 class="text-uppercase font-weight-bold">Contact Us</h5>
+                        <h5 class="text-uppercase site-brand-text">Contact Us</h5>
                         <p>info@studyhaven.com</p>
                     </div>
                     <hr class="clearfix w-100 d-md-none pb-3">
                     <div class="col-md-3 mb-md-0 mb-3">
                         <!-- Categories Footer Links -->
-                        <h5 class="text-uppercase font-weight-bold">Shop</h5>
+                        <h5 class="text-uppercase site-brand-text">Shop</h5>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="{% url 'shop' %}?category=11plus-workbooks" class="footer-link">11+ Workbooks</a>
@@ -190,7 +190,7 @@
                     </div>
                     <div class="col-md-3 mb-md-0 mb-3">
                         <!-- Links -->
-                        <h5 class="text-uppercase font-weight-bold">Links</h5>
+                        <h5 class="text-uppercase site-brand-text">Links</h5>
                         <ul class="list-unstyled">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
@@ -243,7 +243,7 @@
             </div>
             <!-- Copyright -->
             <div class="text-center pt-5 pb-3">
-                <h5 class="pb-2 font-weight-bold">Follow Us!</h5>
+                <h5 class="pb-2 site-brand-text">Follow Us!</h5>
                 <a href="https://www.facebook.com/" target="_blank" class="social-media mx-3"><i class="fab fa-facebook fa-lg"></i></a>
                 <a href="https://www.instagram.com/" target="_blank" class="social-media mr-3"><i class="fab fa-instagram fa-lg"></i></a>
                 <a href="https://twitter.com/" target="_blank" class="social-media mr-3"><i class="fab fa-twitter fa-lg"></i></a>
