@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 
-class TestViews(TestCase):
+class TestHomeViews(TestCase):
 
     """ A test that the home page renders a 200 status code"""
     def test_get_home_page(self):
