@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'profiles',  # user profile app
     'tutoring',  # tutoring app
     'faqs',  # faqs app
+    'storages',  # Django storages
 ]
 
 MIDDLEWARE = [
@@ -193,6 +194,24 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if 'USE_AWS' in os.environ:
+    # Amazon Web Services Bucket Configuration
+    AWS_STORAGE_BUCKET_NAME: 'studyhaven'
+    AWS_S3_REGION_NAME: 'eu-west-2'
+    AWS_ACCESS_KEY_ID: os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY: os.environ.get('SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN: f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Storage of Static & Media Files
+    STATICFILES_STORAGE = 'custom_storages.StaticFilesStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaFilesStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override the static and media URLs on (lines 187 and 190) in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 # Stripe
 THRESHOLD_FOR_FREE_DELIVERY = 20
