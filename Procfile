@@ -1,0 +1,1 @@
+web: gunicorn studyhaven.wsgi:application
