@@ -350,6 +350,10 @@ footer li:hover {
     .nav-link {
         color: #000 !important;
     }
+
+    .text-bag {
+        color: #A52A2A !important;
+    }
 }
 
 @media (min-width: 992px) {
