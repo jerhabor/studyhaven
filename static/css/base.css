@@ -17,19 +17,36 @@ body {
 }
 
 .logo-study-text {
-    color: #ff5757;
+    color: #d2544a;
 }
 
 .dropdown-menu {
     margin-top: 0;
 }
 
-.nav-bar {
+.top-nav {
+    background-color: #fdd9cc;
+    height: 80px;
+}
+
+.nav-bg-custom {
+    background-color: #fdd9cc;
+}
+
+.navbar {
     box-sizing: border-box;
+}
+
+.active {
+    font-weight: 900;
 }
 
 .shopping-basket-icon {
     position: relative;
+}
+
+.text-bag {
+    color: #A52A2A;
 }
 
 #main-nav {
@@ -55,7 +72,7 @@ body {
 }
 
 .form-control.search-bar-web {
-    width: 350px;
+    width: 30vw;
 }
 
 input[name='q']::placeholder {
@@ -88,26 +105,26 @@ input[name='q']::placeholder {
 }
 
 footer {
-    background-color: rgba(255, 87, 87, 0.9);
+    background-color: #fdd9cc;
 }
 
 .footer-link {
     text-decoration: none;
-    color: #fff !important;
+    color: #000 !important;
 }
 
 .social-media {
     margin-right: 20px;
     text-decoration: none;
-    color: #fff !important;
+    color: #000 !important;
 }
 
 .social-media i {
-    transition: transform 0.5s;
+    transition: color 0.5s;
 }
 
 .social-media i:hover {
-    transform: scale(1.5);
+    color: #d2544a;
 }
 
 .btn-go {
@@ -172,7 +189,7 @@ footer {
 }
 
 #reviews-slides p:first-of-type {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Barlow', sans-serif;
 }
 
 .back-to-top {
@@ -211,6 +228,11 @@ footer {
 
 .product-image-click {
     cursor: pointer;
+}
+
+.site-map > a {
+    color: #d2544a;
+    font-weight: bold;
 }
 
 /* ---------------------------------------------------- PRODUCT ADMIN TEMPLATES */
@@ -288,6 +310,19 @@ footer {
     .header-container {
         padding-top: 88px;
     }
+
+    .form-control.search-bar-web {
+        width: 50vw;
+    }
+
+    #main-nav .dropdown-menu {
+        background-color: #fdd9cc !important;
+    }
+
+    #main-nav a:hover {
+        font-weight: bold;
+        background: none;
+    }
 }
 
 @media (min-width: 992px) {
@@ -296,11 +331,33 @@ footer {
     }
     
     .header-container {
-        padding-top: 135px;
+        padding-top: 130px;
     }
     
     .dropdown:hover .dropdown-menu {
         display: block !important;
+    }
+
+    .nav-item .nav-link {
+        letter-spacing: 2px;
+        color: #000 !important;
+    }
+
+    .navbar {
+        background-color: #fdd9cc;
+    }
+
+    #main-nav .dropdown-menu {
+        background-color: #fdd9cc !important;
+    }
+
+    #main-nav a:hover {
+        font-weight: bold;
+        background: none;
+    }
+
+    .site-brand-text {
+        font-family: Lovelo;
     }
 }
 
@@ -311,6 +368,10 @@ footer {
 
     .nav-link {
         padding: .5rem 0rem !important;
+    }
+
+    .form-control.search-bar-web {
+        width: 60vw;
     }
 }
 

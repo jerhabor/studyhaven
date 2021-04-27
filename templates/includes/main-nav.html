@@ -1,6 +1,6 @@
-<div class="collapse navbar-collapse" id="main-nav">
+<div class="collapse navbar-collapse site-brand-text" id="main-nav">
     {% with request.resolver_match.url_name as url_name %}
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav pt-1 mx-auto">
             <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
                 <a class="nav-link mr-lg-4" href="/">Home <span class="sr-only">(current)</span></a>
             </li>

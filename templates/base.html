@@ -56,7 +56,7 @@
 
     <body>
         <header class="container-fluid fixed-top nav-bar">
-            <div class="row bg-white d-none d-lg-flex">
+            <div class="row top-nav d-none d-lg-flex">
                 <!-- StudyHaven logo -->
                 <div class="col-12 col-lg-3 text-center text-lg-left d-none d-lg-block logo-container">
                     <a href="{% url 'home' %}" class="nav-link">
@@ -102,7 +102,7 @@
                             </div>
                         </li>
                         <li class="list-inline-item">
-                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-dark{% endif %} nav-link" href="{% url 'view_bag' %}">
+                            <a class="{% if grand_total %}text-bag font-weight-bold{% else %}text-dark{% endif %} nav-link" href="{% url 'view_bag' %}">
                                 <div class="text-center">
                                     <div><i class="fas fa-shopping-basket fa-lg"></i></div>
                                     <p class="my-0">
@@ -118,7 +118,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row bg-white">
+            <div class="row nav-bg-custom">
                 <nav class="navbar navbar-expand-lg navbar-light w-100 pt-lg-0">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -157,19 +157,19 @@
         {% endblock %}
 
         <!-- Page Footer -->
-        <footer class="page-footer font-small pt-4 text-white">
+        <footer class="page-footer font-small pt-4">
             <!-- Footer Links -->
             <div class="container-fluid text-center text-md-left">
                 <div class="row">
                     <div class="col-md-6 mt-md-0 mt-3">
                         <!-- Content -->
-                        <h5 class="text-uppercase">Contact Us</h5>
+                        <h5 class="text-uppercase font-weight-bold">Contact Us</h5>
                         <p>info@studyhaven.com</p>
                     </div>
                     <hr class="clearfix w-100 d-md-none pb-3">
                     <div class="col-md-3 mb-md-0 mb-3">
                         <!-- Categories Footer Links -->
-                        <h5 class="text-uppercase">Shop</h5>
+                        <h5 class="text-uppercase font-weight-bold">Shop</h5>
                         <ul class="list-unstyled">
                             <li>
                                 <a href="{% url 'shop' %}?category=11plus-workbooks" class="footer-link">11+ Workbooks</a>
@@ -190,7 +190,7 @@
                     </div>
                     <div class="col-md-3 mb-md-0 mb-3">
                         <!-- Links -->
-                        <h5 class="text-uppercase">Links</h5>
+                        <h5 class="text-uppercase font-weight-bold">Links</h5>
                         <ul class="list-unstyled">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
@@ -224,12 +224,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-12 search-container">
                     <form action="{% url 'shop' %}" method="GET">
                         <div class="input-group w-100">
                             <div class="form-outline text-center d-inline-flex">
-                                <input type="text" name="q" class="form-control" id="searchbar" placeholder="Search our shop"/>
+                                <input type="text" name="q" class="form-control search-bar-web" id="searchbar" placeholder="Search our shop"/>
                             </div>
                             <div class="input-group-append d-inline-flex">
                                 <button type="submit" class="btn btn-dark form-control">
@@ -243,13 +243,13 @@
             </div>
             <!-- Copyright -->
             <div class="text-center pt-5 pb-3">
-                <h5 class="pb-2">Follow Us!</h5>
+                <h5 class="pb-2 font-weight-bold">Follow Us!</h5>
                 <a href="https://www.facebook.com/" target="_blank" class="social-media mx-3"><i class="fab fa-facebook fa-lg"></i></a>
                 <a href="https://www.instagram.com/" target="_blank" class="social-media mr-3"><i class="fab fa-instagram fa-lg"></i></a>
                 <a href="https://twitter.com/" target="_blank" class="social-media mr-3"><i class="fab fa-twitter fa-lg"></i></a>
                 <a href="https://www.youtube.com/" target="_blank" class="social-media mr-3"><i class="fab fa-youtube fa-lg"></i></a>
             </div>
-            <div class="footer-copyright text-center pb-3">
+            <div class="footer-copyright text-center pb-3 small font-weight-bold">
                 © StudyHaven 2021
             </div>
             <!-- Copyright -->
