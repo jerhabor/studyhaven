@@ -71,16 +71,16 @@
         <div class="col-12 col-lg-6 order-lg-last mb-5 px-4">
             <p class="text-muted">Your Order ({{ product_count }} {% if product_count > 1 %}items{% else %}item{% endif %})</p>
             <div class="row">
-                <div class="col-7 offset-2">
+                <div class="col-8 col-sm-7 offset-sm-2">
                     <p class="mb-1 mt-0 small text-muted">Product</p>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-4 col-sm-3 text-right">
                     <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                 </div>
             </div>
             {% for product in bag_products %}
             <div class="row">
-                <div class="col-2 mb-1">
+                <div class="col-4 col-sm-2 mb-1">
                     <a href="{% url 'product_info' product.product.id %}">
                         {% if product.product.image %}
                         <img class="w-100" src="{{ product.product.image.url }}" alt="{{ product.name }}">
@@ -89,11 +89,11 @@
                         {% endif %}
                     </a>
                 </div>
-                <div class="col-7">
+                <div class="col-4 pl-0 pl-sm-3 col-sm-7">
                     <p class="my-0"><strong>{{ product.product.name }}</strong></p>
                     <p class="my-0 small text-muted">Quantity: {{ product.quantity }}</p>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-4 col-sm-3 text-right">
                     <p class="my-0 small text-muted">£{{ product.product.price | subtotal_calculation:product.quantity }}</p>
                 </div>
             </div>
@@ -156,14 +156,15 @@
                 <!-- Navigation Buttons -->
                 <div class="submit-button text-center text-md-right mt-4 mb-1 px-3">
                     <!-- Return to Shopping Bag Button -->
-                    <a href="{% url 'view_bag' %}" class="btn btn-outline-dark btn-lg mr-0 mb-2 mr-sm-2 mb-sm-0">
+                    <a href="{% url 'view_bag' %}" class="btn btn-outline-dark btn-lg mb-sm-2 mr-sm-2">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="text-uppercase">Return to bag</span>
                     </a>
+                    <br class="d-sm-none checkout-button-line">
                     <!-- Complete Payment Button -->
-                    <button id="pay-button" class="btn btn-dark btn-lg">
+                    <button id="pay-button" class="btn btn-dark btn-lg mt-2 mt-sm-0 mb-sm-2">
                         <span class="text-uppercase">Complete Payment</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>
