@@ -52,7 +52,7 @@
                     </div>
                     <!-- Products' Select Sort Container -->
                     <div class="col-12 col-md-6 my-auto d-flex justify-content-center justify-content-md-end">
-                        <div class="sorting-container w-50">
+                        <div class="sorting-container w-75 w-md-50">
                             <select id="sort-options" class="custom-select custom-select-sm border">
                                 <option value="reset" {% if chosen_sort == 'None_None' %}selected{% endif %}>Featured</option>
                                 <option value="category_asc" {% if chosen_sort == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
@@ -66,7 +66,7 @@
                 <!-- Product Card -->
                 <div class="row mb-4">
                     {% for product in shop %}
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
+                        <div class="col-sm-6 col-lg-4 col-xl-3 product-card">
                             <div class="card h-100 mx-3">
                                 <!-- Product Image -->
                                 <div class="card-image h-75">

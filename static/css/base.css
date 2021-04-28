@@ -411,9 +411,21 @@ footer li:hover {
     #reviews-slides .carousel-item {
         height: 250px;
     }
+}
 
-    .sales-intro > div {
-        padding
+@media (max-width: 350px) {
+    .product-card {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .line-breaker {
+        display: block !important;
+    }
+
+    .add-to-bag {
+        margin-left: 0px !important;
+        margin-top: 10px;
     }
 }
 
