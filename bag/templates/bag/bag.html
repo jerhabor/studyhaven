@@ -11,12 +11,13 @@
         </div>
     </div>
 {% endblock %}
-
 {% block content %}
+<!-- SHOPPING BAG MAIN CONTENT -->
     <div class="container">
         <div class="row">
             <div class="col-12 mt-3 text-center">
                 <h2 class="site-logo">Shopping Bag</h2>
+                <!-- Checkout Steps -->
                 <div class="col-12 col-lg-6 offset-lg-3 my-auto">
                     <ul class="list-inline text-center">
                         <li class="list-inline-item">
@@ -48,6 +49,7 @@
                 <hr class="w-50">
             </div>
         </div>
+        <!-- Statement for Number of Products in Bag -->
         <div class="row">
             <div class="col-12">
                 <p class="text-center">
@@ -64,6 +66,7 @@
                 </p>
             </div>
         </div>
+        <!-- Table of Bag Contents -->
         <div class="row">
             <div class="col-12">
                 {% if bag_products %}
@@ -127,6 +130,7 @@
                                     </td>
                                 </tr>
                                 {% endfor %}
+                                <!-- Total Summaries Including Delivery -->
                                 <tr class="bg-white">
                                     <td colspan="6" class="pt-5 text-right">
                                         <h6><strong>Bag Total: £{{ total_price|floatformat:2 }}</strong></h6>
@@ -139,6 +143,7 @@
                                         {% endif %}
                                     </td>
                                 </tr>
+                                <!-- Back and Continue Buttons -->
                                 <tr>
                                     <td colspan="6" class="text-right bg-white">
                                         <a href="{% url 'shop' %}" class="btn btn-outline-dark btn-lg mr-2">
@@ -159,8 +164,10 @@
                         </table>
                     </div>
                 {% else %}
+                    <!-- Empty Bag Text -->
                     <div class="text-center mb-5">
                         <h4 class="text-center mb-4">Your bag is empty!</h4>
+                        <!-- Go To Shop Button -->
                         <a href="{% url 'shop' %}" class="btn btn-dark btn-lg">
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
@@ -175,9 +182,10 @@
         </div>
     </div>
 {% endblock %}
-
+<!-- POSTLOAD JAVASCRIPT -->
 {% block postload_js %}
     {{ block.super }}
+    <!-- Script for Quantity Stepper Element -->
     {% include 'products/includes/item_quantity_script.html' %}
     <script type="text/javascript">
         // Quantity is updated as the user increments or decrements
