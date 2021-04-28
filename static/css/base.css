@@ -407,6 +407,14 @@ footer li:hover {
     .form-control.search-bar-web {
         width: 60vw;
     }
+
+    #reviews-slides .carousel-item {
+        height: 250px;
+    }
+
+    .sales-intro > div {
+        padding
+    }
 }
 
 /* ---------------------------------------------------- ALLAUTH FORM INNER CONTENT */
