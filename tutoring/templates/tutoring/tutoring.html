@@ -1,6 +1,14 @@
 {% extends "base.html" %}
-<!-- Navigation Bar Container -->
+{% block extra_css %}
+<!-- Calendly CSS -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+{% endblock %}
+{% block extra_js %}
+<!-- Calendly Script -->
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+{% endblock %}
 {% block page_header %}
+<!-- Navigation Bar Container -->
 <div class="container header-container">
     <div class="row">
         <div class="col"></div>
@@ -20,7 +28,7 @@
     <div class="row">
         <div class="col-12 offset-md-3 col-md-6">
             <p class="text-center">
-                We do both private and group tutoring.<br>All of our sessions are currently held virtually due to the Covid-19 pandemic.<br><br>Payments can only be made during your first consultation with us.<br><br>Click here to book a free 15 minute consultation.
+                We do both private and group tutoring.<br>All of our sessions are currently held virtually due to the Covid-19 pandemic.<br><br>Payments can only be made during your first consultation with us.<br><br><a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/studyhaven/15min'});return false;">Click here</a> to book a free 15-minute consultation.
             </p>
             <hr>
         </div>
@@ -80,7 +88,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <p class="lead px-3">Need more information?</p>
-            <p>Click here to book a free 15-minute consultation with us.</p>
+            <p><a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/studyhaven/15min'});return false;">Click here</a> to book a free 15-minute consultation with us.</p>
         </div>
     </div>
 </div>
