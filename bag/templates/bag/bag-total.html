@@ -1,0 +1,11 @@
+<!-- Order Total -->
+<h6><strong>Bag Total: £{{ total_price|floatformat:2 }}</strong></h6>
+<!-- Delivery Cost -->
+<h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+<!-- Amount Left for Free Delivery -->
+<h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+{% if left_for_free_delivery > 0 %}
+    <p class="mb-1 text-danger">
+        Spend <strong>£{{ left_for_free_delivery }}</strong> more to get free delivery!
+    </p>
+{% endif %}
