@@ -318,6 +318,10 @@ footer li:hover {
     float: right;
 }
 
+.bg-brand2 {
+    background-color: rgba(210, 84, 74, 0.6)
+}
+
 /* ---------------------------------------------------- MEDIA QUERIES */
 
 @media (min-width: 1200px) {
