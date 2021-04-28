@@ -26,7 +26,8 @@ def all_products(request):
             sort = sort_choice
             if sort_choice == 'name':
                 sort_choice = 'name_lower'
-                products = products.annotate(name_lower=functions.Lower('name'))
+                products = products.annotate(
+                    name_lower=functions.Lower('name'))
             if sort_choice == 'category':
                 sort_choice = 'category__name'
             if 'method' in request.GET:
@@ -148,5 +149,6 @@ def delete_product(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
-    messages.success(request, f'{product.name} has now been deleted from the StudyHaven shop!')
+    messages.success(request, f'{product.name} has now \
+        been deleted from the StudyHaven shop!')
     return redirect(reverse('shop'))
