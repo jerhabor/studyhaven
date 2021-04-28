@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 
 def faqs(request):
-    """" View to returns the tutoring page """
+    """" View to return the FAQs page """
     return render(request, 'faqs/faqs.html')
