@@ -2,8 +2,8 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
     <head>
+        <!-- META BLOCK -->
         {% block meta %}
             <!-- Support for older Internet Explorer versions -->
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,10 +11,10 @@
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% endblock %}
-
+        <!-- EXTRA META BLOCK -->
         {% block extra_meta %}
         {% endblock %}
-
+        <!-- CORE CSS BLOCK -->
         {% block core_css %}
             <!-- Browser Tab Favicon -->
             <link rel="icon" type="image/png" href="{% static 'images/favicon.ico' %}">
@@ -27,10 +27,10 @@
             <!-- CSS Stylesheet -->
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
-
+        <!-- EXTRA CSS BLOCK -->
         {% block extra_css %}
         {% endblock %}
-
+        <!-- CORE JAVASCRIPT BLOCK -->
         {% block core_js %}
             <!-- Font Awesome Kitcode -->
             <script src="https://kit.fontawesome.com/57e47c4f6b.js" crossorigin="anonymous"></script>
@@ -45,16 +45,14 @@
             <!-- Stripe JS Library -->
             <script src="https://js.stripe.com/v3/"></script>
         {% endblock %}
-
-        <!-- Extra JavaScript prior to page load -->
+        <!-- EXTRA JAVASCRIPT BLOCK -->
         {% block extra_js %}
         {% endblock %}
-
         <!-- Browser Tab Title -->
-        <title>StudyHaven {% block extra_title %}{% endblock %}</title>
+        <title>StudyHaven - {% block extra_title %}{% endblock %}</title>
     </head>
-
     <body>
+        <!-- NAVIGATION BAR -->
         <header class="container-fluid fixed-top nav-bar">
             <div class="row top-nav d-none d-lg-flex">
                 <!-- StudyHaven logo -->
@@ -118,17 +116,19 @@
                     </ul>
                 </div>
             </div>
+            <!-- Responsive Navigation Bars -->
             <div class="row nav-bg-custom">
                 <nav class="navbar navbar-expand-lg navbar-light w-100 pt-lg-0">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <!-- Top Mobile Navigation Bar -->
                     {% include 'includes/mobile-top-nav.html' %}
+                    <!-- Lower Navigation Bar -->
                     {% include 'includes/main-nav.html' %}
                 </nav>
             </div>
         </header>
-
         <!-- Django Messages -->
         {% if messages %}
             <div class="message-container">
@@ -147,15 +147,12 @@
                 {% endfor %}
             </div>
         {% endif %}
-
         <!-- Page Header -->
         {% block page_header %}
         {% endblock %}
-
         <!-- Page Content -->
         {% block content %}
         {% endblock %}
-
         <!-- Page Footer -->
         <footer class="page-footer font-small pt-4">
             <!-- Footer Links -->
@@ -189,7 +186,7 @@
                         </ul>
                     </div>
                     <div class="col-md-3 mb-md-0 mb-3">
-                        <!-- Links -->
+                        <!-- Other Key Links -->
                         <h5 class="text-uppercase site-brand-text">Links</h5>
                         <ul class="list-unstyled">
                             {% if request.user.is_authenticated %}
@@ -224,20 +221,21 @@
                         </ul>
                     </div>
                 </div>
+                <!-- Search Box Container -->
                 <div class="row mt-4">
                     <div class="col-12 search-container">
-                    <form action="{% url 'shop' %}" method="GET">
-                        <div class="input-group w-100">
-                            <div class="form-outline text-center d-inline-flex">
-                                <input type="text" name="q" class="form-control search-bar-web" id="searchbar" placeholder="Search our shop"/>
+                        <form action="{% url 'shop' %}" method="GET">
+                            <div class="input-group w-100">
+                                <div class="form-outline text-center d-inline-flex">
+                                    <input type="text" name="q" class="form-control search-bar-web" id="searchbar" placeholder="Search our shop"/>
+                                </div>
+                                <div class="input-group-append d-inline-flex">
+                                    <button type="submit" class="btn btn-dark form-control">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="input-group-append d-inline-flex">
-                                <button type="submit" class="btn btn-dark form-control">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -252,13 +250,9 @@
             <div class="footer-copyright text-center pb-3 small font-weight-bold">
                 © StudyHaven 2021
             </div>
-            <!-- Copyright -->
-
         </footer>
-        <!-- Footer -->
-
-        <!-- JavaScript to load after the page contents -->
         {% block postload_js %}
+        <!-- POSTLOAD JAVASCRIPT -->
             <script type="text/javascript">
                 $('.toast').toast('show');
             </script>

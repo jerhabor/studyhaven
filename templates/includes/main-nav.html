@@ -1,9 +1,11 @@
 <div class="collapse navbar-collapse site-brand-text" id="main-nav">
     {% with request.resolver_match.url_name as url_name %}
         <ul class="navbar-nav pt-1 mx-auto">
+            <!-- Home -->
             <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
                 <a class="nav-link mr-lg-4" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
+            <!-- My Account -->
             <li class="nav-item dropdown d-sm-none {% if url_name == 'account' %}active{% endif %}">
                 <a class="nav-link mr-lg-4 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -22,6 +24,7 @@
                     {% endif %}
                 </div>
             </li>
+            <!-- Shop -->
             <li class="nav-item dropdown {% if url_name == 'shop' %}active{% endif %}">
                 <a class="nav-link mr-lg-4 dropdown-toggle" href="{% url 'shop' %}" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -38,12 +41,15 @@
                     <a class="dropdown-item" href="{% url 'shop' %}?category=stationery">Stationery</a>
                 </div>
             </li>
+            <!-- Tutoring -->
             <li class="nav-item mr-lg-4 {% if url_name == 'tutoring' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'tutoring' %}">Tutoring</a>
             </li>
+            <!-- FAQs -->
             <li class="nav-item mr-lg-4 {% if url_name == 'faqs' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'faqs' %}">FAQs</a>
             </li>
+            <!-- Search Bar -->
             <form action="{% url 'shop' %}" method="GET">
                 <div class="input-group w-100 d-inline-flex d-lg-none">
                     <div class="form-outline text-center">
