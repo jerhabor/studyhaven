@@ -12,7 +12,8 @@ import stripe
 @csrf_exempt
 def webhook_view(request):
     """ A view for listening to Stripe Webhooks. General flow following:
-    https://stripe.com/docs/payments/handling-payment-events#build-your-own-webhook """
+    https://stripe.com/docs/payments/\
+        handling-payment-events#build-your-own-webhook """
     # Setup of the Webhook permissions & verify it came from Stripe
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY

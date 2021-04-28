@@ -33,13 +33,14 @@ class StripeWebhookHandler:
             {'order': order})
         email_body = render_to_string(
             'checkout/confirmation_emails/email_body.txt',
-            {'order': order, 'studyhaven_email': settings.DEFAULT_EMAIL_SENDER})
+            {'order': order,
+             'studyhaven_email': settings.DEFAULT_EMAIL_SENDER})
         send_mail(
             email_subject,
             email_body,
             settings.DEFAULT_EMAIL_SENDER,
             [customer_email]
-        )  
+        )
 
     def handle_generic_event(self, event):
         """

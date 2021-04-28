@@ -7,7 +7,8 @@ from django.db.models import Sum
 from products.models import Product
 from profiles.models import UserProfile
 
-# In order to access the two letter country code for the forms to be processed by Stripe:
+# In order to access the two letter country code
+# for the forms to be processed by Stripe:
 from django_countries.fields import CountryField
 
 from decimal import Decimal
