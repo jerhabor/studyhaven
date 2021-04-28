@@ -180,23 +180,24 @@
             </div>
         </div>
         <!-- Navigation Buttons -->
-        <div class="col-12 offset-lg-3 col-lg-6 text-right mb-4">
+        <div class="col-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6 mt-2 mb-4">
             {% if came_from_profile %}
-                <a href="{% url 'profile' %}" class="btn btn-dark btn-lg">
+                <a href="{% url 'profile' %}" class="btn btn-dark btn-lg float-right">
                     <span class="icon">
                         <i class="fas fa-angle-left"></i>
                     </span>
                     <span class="text-uppercase">Back to My Profile</span>
                 </a>
             {% else %}
-                <a href="{% url 'shop' %}" class="btn {% if request.user.is_authenticated %}btn-outline-dark mr-2{% else %}btn-dark{% endif %} btn-lg">
+                <a href="{% url 'shop' %}" class="btn {% if request.user.is_authenticated %}btn-outline-dark mr-0 mr-sm-2{% else %}btn-dark{% endif %} btn-lg">
                     <span class="icon">
                         <i class="fas fa-chevron-left"></i>
                     </span>
                     <span class="text-uppercase">Shop for more</span>
                 </a>
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'profile' %}" class="btn btn-dark btn-lg">
+                <br class="d-sm-none checkout-button-line">
+                <a href="{% url 'profile' %}" class="btn btn-dark btn-lg mt-2 mt-sm-0 float-right">
                     <span class="text-uppercase">My Profile</span>
                     <span class="icon">
                         <i class="fas fa-user ml-2"></i>
