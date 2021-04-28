@@ -185,6 +185,10 @@ footer li:hover {
     cursor: pointer;
 }
 
+.container.error {
+    height: calc(100vh - 135px);
+}
+
 /* ---------------------------------------------------- HOME MAIN CAROUSEL */
 
 #header-slides .carousel-item {
