@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+<!-- Calendly CSS -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+{% endblock %}
+{% block extra_js %}
+<!-- Calendly Script -->
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+{% endblock %}
+<!-- Page Title Continuation -->
+{% block extra_title %}Tutoring{% endblock %}
+{% block page_header %}
+<!-- Navigation Bar Container -->
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<!-- 500 PAGE MAIN CONTENT -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-bag">Oops...</h1>
+            <hr class="w-75">
+            <p class="lead">Looks like an error on our side! We're working on it. Please try again later.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
