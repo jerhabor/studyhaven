@@ -60,7 +60,7 @@
                 <table class="table table-sm table-borderless">
                     <thead>
                         <tr>
-                            <th>Order Number</th>
+                            <th class="w-25">Order Number</th>
                             <th class="w-25">Date</th>
                             <th>Products</th>
                             <th>Total</th>
@@ -71,11 +71,11 @@
                             <tr>
                                 <td>
                                     <a href="{% url 'order_history' order.order_number %}"
-                                    title="{{ order.order_number }}">
-                                        {{ order.order_number|truncatechars:12 }}
+                                    title="{{ order.order_number }}" class="small">
+                                        {{ order.order_number|truncatechars:6 }}
                                     </a>
                                 </td>
-                                <td>{{ order.order_date }}</td>
+                                <td class="small">{{ order.order_date }}</td>
                                 <td>
                                     <ul class="list-unstyled">
                                         {% for product in order.each_line.all %}
@@ -85,7 +85,7 @@
                                         {% endfor %}
                                     </ul>
                                 </td>
-                                <td>£{{ order.grand_total }}</td>
+                                <td class="small">£{{ order.grand_total }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
