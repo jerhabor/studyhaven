@@ -7,20 +7,21 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
-<!-- Navigation Bar Container -->
 {% block page_header %}
+<!-- Navigation Bar Container -->
 <div class="container header-container">
     <div class="row">
         <div class="col"></div>
     </div>
 </div>
 {% endblock %}
-
 {% block content %}
+<!-- CHECKOUT PAGE MAIN CONTENT -->
 <div class="container">
     <div class="row">
         <div class="col-12 mt-3 text-center">
             <h2 class="site-logo">Checkout</h2>
+            <!-- Checkout Steps -->
             <div class="col-12 col-lg-6 offset-lg-3 my-auto">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
@@ -52,6 +53,7 @@
             <hr class="w-50">
         </div>
     </div>
+    <!-- Introductory Text -->
     <div class="row">
         <div class="col-12 text-center">
             <p class="text-center"> Hello, 
@@ -63,6 +65,7 @@
             {% endif %}
             Please complete your order by filling in and checking your details below.</p>
         </div>
+        <!-- 'About To Order' Summary Column -->
         <div class="col-12 col-lg-6 order-lg-last mb-5 px-4">
             <p class="text-muted">Your Order ({{ product_count }} {% if product_count > 1 %}items{% else %}item{% endif %})</p>
             <div class="row">
@@ -107,15 +110,18 @@
                 </div>
             </div>
         </div>
+        <!-- Checkout Form -->
         <div class="col-12 col-lg-6">
             <form action="{% url 'checkout' %}" method="POST" id="checkout-form">
                 {% csrf_token %}
+                <!-- Contact Information -->
                 <fieldset class="px-3 mb-4">
                     <legend class="fieldset-label text-dark w-auto">Contact Information</legend>
                     {{ form.full_name | as_crispy_field }}
                     {{ form.email_address | as_crispy_field }}
                     {{ form.phone_number | as_crispy_field }}
                 </fieldset>
+                <!-- Shipping Information -->
                 <fieldset class="px-3">
                     <legend class="fieldset-label text-dark w-auto">Shipping Address</legend>
                     {{ form.country | as_crispy_field }}
@@ -135,6 +141,7 @@
                         {% endif %}
                     </div>
                 </fieldset>
+                <!-- Payment Information -->
                 <fieldset class="px-3">
                     <legend class="fieldset-label text-dark w-auto">Payment</legend>
                     <!-- Stripe Card Element -->
@@ -142,8 +149,9 @@
                     <!-- Form Errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     <!-- Client Secret -->
-                    <input type="hidden" name="client_secret" value="{{ client_secret }}">
+                    <input type="hidden" name="client_secret" value="{{ client_secret_key }}">
                 </fieldset>
+                <!-- Navigation Buttons -->
                 <div class="submit-button text-center text-md-right mt-4 mb-1 px-3">
                     <!-- Return to Shopping Bag Button -->
                     <a href="{% url 'view_bag' %}" class="btn btn-outline-dark btn-lg mr-0 mb-2 mr-sm-2 mb-sm-0">
@@ -160,6 +168,7 @@
                         </span>
                     </button>
                 </div>
+                <!-- Small Billing Notification -->
                 <div class="text-center text-md-right text-danger mb-4 px-3">
                     <p class=" mb-1 small font-weight-bold">Your card will be billed £{{ grand_total }}</p>
                 </div>
@@ -171,10 +180,9 @@
 <div id="payment-loading-overlay">
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>
-
 {% endblock %}
-
 {% block postload_js %}
+<!-- POSTLOAD JAVASCRIPT -->
     {{ block.super }}
     {{ stripe_publishable_key|json_script:"id_stripe_publishable_key" }}
     {{ client_secret_key|json_script:"id_client_secret_key" }}

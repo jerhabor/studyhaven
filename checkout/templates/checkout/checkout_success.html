@@ -13,12 +13,13 @@
     </div>
 </div>
 {% endblock %}
-
 {% block content %}
+<!-- CHECKOUT SUCCESS PAGE MAIN CONTENT -->
 <div class="container">
     <div class="row">
         <div class="col-12 mt-3 text-center">
             <h2 class="site-logo">Thank You <i class="fas fa-handshake"></i></h2>
+            <!-- Checkout Steps -->
             <div class="col-12 col-lg-6 offset-lg-3 my-auto">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
@@ -50,6 +51,7 @@
             <hr class="w-50">
         </div>
     </div>
+    <!-- Order Summary Container -->
     <div class="row">
         <div class="col-12 text-center">
             <p class="text-center"> Hello, 
@@ -67,6 +69,7 @@
                         <h3 class="text-center font-weight-bold mt-1 mb-4">Order Summary</h3>
                     </div>
                 </div>
+                <!-- Order Information -->
                 <div class="row">
                     <div class="col-12">
                         <p class="mb-0 small text-uppercase">Order Information:</p>
@@ -84,6 +87,7 @@
                         <p>{{ order.order_date }}</p>
                     </div>
                 </div>
+                <!-- Order Details of the Purchase -->
                 <div class="row">
                     <div class="col-12">
                         <p class="mb-0 small text-uppercase">Order Details:</p>
@@ -97,6 +101,7 @@
                         </div>
                     {% endfor %}
                 </div>
+                <!-- Shipping Details -->
                 <div class="row">
                     <div class="col-12">
                         <p class="mb-0 small text-uppercase">Shipped To:</p>
@@ -146,6 +151,7 @@
                         <p>{{ order.phone_number }}</p>
                     </div>
                 </div>
+                <!-- Billing Information -->
                 <div class="row">
                     <div class="col-12">
                         <p class="mb-0 small text-uppercase">Billing Information:</p>
@@ -171,6 +177,7 @@
                 </div>
             </div>
         </div>
+        <!-- Navigation Buttons -->
         <div class="col-12 offset-lg-3 col-lg-6 text-right mb-4">
             {% if came_from_profile %}
                 <a href="{% url 'profile' %}" class="btn btn-dark btn-lg">

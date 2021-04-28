@@ -13,8 +13,8 @@
     </div>
 </div>
 {% endblock %}
-
 {% block content %}
+<!-- PROFILE PAGE MAIN CONTENT -->
 <div class="container">
     <div class="row">
         <div class="col-12 mt-3 text-center">
@@ -22,16 +22,19 @@
             <hr class="w-50">
         </div>
     </div>
+    <!-- Update Profile Container -->
     <div class="row mb-4">
         <div class="col-12 col-lg-6">
             <form action="{% url 'profile' %}" method="POST" id="profile-form">
                 {% csrf_token %}
+                <!-- Contact Information -->
                 <fieldset class="px-3 mb-4">
                     <legend class="fieldset-label text-dark w-auto">Contact Information</legend>
                     {{ form.default_full_name | as_crispy_field }}
                     {{ form.default_email_address | as_crispy_field }}
                     {{ form.default_phone_number | as_crispy_field }}
                 </fieldset>
+                <!-- Shipping Information -->
                 <fieldset class="px-3">
                     <legend class="fieldset-label text-dark w-auto">Shipping Address</legend>
                     {{ form.default_country | as_crispy_field }}
@@ -48,6 +51,7 @@
                 </div>
             </form>
         </div>
+        <!-- Order History Table -->
         <div class="col-12 col-lg-6 mt-5 mt-lg-0">
             <h4 class="mb-2 px-3">Order History</h4>
             <div class="px-3 table-responsive order-history-container">
@@ -89,8 +93,8 @@
     </div>
 </div>
 {% endblock %}
-
 {% block postload_js %}
+<!-- POSTLOAD JAVASCRIPT -->
     {{ block.super }}
     <script type="text/javascript" src="{% static 'profiles/js/default_country_field.js' %}"></script>
 {% endblock %}
