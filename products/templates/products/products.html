@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+<!-- Loading static files including CSS, fonts and images -->
 {% load static %}
-
+<!-- Navigation Bar Container -->
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -8,12 +9,13 @@
         </div>
     </div>
 {% endblock %}
-
 {% block content %}
+<!-- SHOP PAGE MAIN CONTENT -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 mt-3 text-center">
                 <h2 class="site-logo">Shop</h2>
+                <!-- Categories Filter -->
                 {% if chosen_category == None %}
                     {% for c in all_categories %}
                         <a href="{% url 'shop' %}?category={{ c.name }}" class="text-decoration-none tag-link">
@@ -33,6 +35,7 @@
         <div class="row">
             <div class="col products-container offset-1 col-10">
                 <div class="row mt-1 mb-3">
+                    <!-- Number of Products Displayed -->
                     <div class="col-12 col-md-6">
                         <p class="text-center text-md-left text-muted">
                             {% if chosen_category or query != 'None_None' %}
@@ -45,6 +48,7 @@
                             <span class="text-dark small ml-2">{{ shop|length }} Products{% if query %} found for <strong>"{{ query }}"</strong>{% endif %}</span>
                         </p>
                     </div>
+                    <!-- Products' Select Sort Container -->
                     <div class="col-12 col-md-6 my-auto d-flex justify-content-center justify-content-md-end">
                         <div class="sorting-container w-50">
                             <select id="sort-options" class="custom-select custom-select-sm border">
@@ -57,10 +61,12 @@
                         </div>
                     </div>
                 </div>
+                <!-- Product Card -->
                 <div class="row mb-4">
                     {% for product in shop %}
                         <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="card h-100 mx-3">
+                                <!-- Product Image -->
                                 <div class="card-image h-75">
                                 {% if product.image %}
                                 <a href="{% url 'product_info' product.id %}">
@@ -71,10 +77,12 @@
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.jpg" alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
-                            </div>
+                                </div>
+                                <!-- Product Name -->
                                 <div class="card-body h-25">
                                     <p class="card-text">{{ product.name }}</p>
                                 </div>
+                                <!-- Product Card Footer -->
                                 <div class="card-footer text-left">
                                     <div class="row">
                                         <div class="col">
@@ -84,29 +92,29 @@
                                                 <span class="small text-uppercase float-right text-right">
                                                     <a href="{% url 'edit_product' product.id %}" class="text-info font-weight-bold">Edit</a><br>
                                                     <a data-target="#deleteModal{{ product.id }}" data-toggle="modal" class="text-danger font-weight-bold" href="#deleteModal{{ product.id }}">Delete</a>
-                                                    <!-- Delete Modal -->
-                                                    <div class="modal fade" id="deleteModal{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title">Confirm Delete</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Are you sure you would like to delete <strong>{{ product.name }}</strong>? Please note that this cannot be undone!
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <a type="button" class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </span>
                                                 {% endif %}
                                             </p>
+                                            <!-- Delete Modal -->
+                                            <div class="modal fade" id="deleteModal{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Confirm Delete</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you would like to delete <strong>{{ product.name }}</strong>? Please note that this cannot be undone!
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <a type="button" class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <p class="small">
                                                 <a href="{% url 'shop' %}?category={{ product.category.name }}" class="text-muted">
                                                     <i class="fas fa-tag"></i> {{ product.category.shop_name }}
@@ -117,21 +125,25 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Horizontal Rule -->
                         <div class="col-12 d-sm-none my-2">
                             <hr>
                         </div>
                         <!-- From the Code Institute Boutique Ado Tutorial -->
                         {% if forloop.counter|divisibleby:2 %}
+                        <!-- Horizontal Rule -->
                         <div class="col-12 d-none d-sm-block d-lg-none my-2">
                             <hr>
                         </div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:3 %}
+                        <!-- Horizontal Rule -->
                         <div class="col-12 d-none d-lg-block d-xl-none my-2">
                             <hr>
                         </div>
                         {% endif %}
                         {% if forloop.counter|divisibleby:4 %}
+                        <!-- Horizontal Rule -->
                         <div class="col-12 d-none d-xl-block my-2">
                             <hr>
                         </div>
@@ -144,11 +156,10 @@
 {% endblock %}
 
 {% block postload_js %}
+<!-- POSTLOAD JAVASCRIPT -->
     {{ block.super }}
     <script type="text/javascript">
-
         $(".tag-link:nth-of-type(2n)").add('.tag-link:last').after("<div class='d-md-none mt-2'></div>");
-
         $('#sort-options').change(function() {
             var sortOptions = $(this);
             var pageUrl = new URL(window.location);
