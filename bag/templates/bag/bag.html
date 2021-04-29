@@ -97,6 +97,7 @@
                                 <p><strong>Subtotal: </strong>£{{ item.product.price | subtotal_calculation:item.quantity }}</p>
                             </div>
                             <div class="col-12 col-sm-6">
+                                <p>Quantity:</p>
                                 {% include 'bag/bag-quantity-box.html' %}
                             </div>
                         </div>
