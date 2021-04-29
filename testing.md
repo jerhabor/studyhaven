@@ -357,4 +357,4 @@ Key: ✔ = Displays as intended
 
 <img src="static/images/loaddata-error.png" alt="Load data error" width="50%" height="auto"/>
 
-The above error is still being looked at, however due to the time constraints of the milestone project it is marked as unsolved. All data was successfully entered into the Heroku deployment so please ensure that you connect to `postgres` first being entering data into the database manually.
+The above error is still being looked at, however due to the time constraints of the milestone project it is marked as unsolved. All data was successfully entered into the Heroku deployment so please ensure that you connect to `postgres` first when entering data into the database manually.
