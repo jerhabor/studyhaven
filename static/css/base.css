@@ -193,7 +193,7 @@ footer li:hover {
 
 #header-slides .carousel-item {
     width: 100%;
-    height: calc(100vh - 135px);
+    max-height: calc(100vh - 88px);
     overflow: hidden;
     position: relative;
 }
@@ -457,10 +457,6 @@ footer li:hover {
 
     .form-control.search-bar-web {
         width: 60vw;
-    }
-
-    #reviews-slides .carousel-item {
-        height: 250px;
     }
 
     .order-number-col {
