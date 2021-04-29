@@ -121,6 +121,9 @@ I came across a custom font called `Lovelo` which is youthful and great for bran
 <img src="static/images/lovelo-black.png" alt="Lovelo Black Font" width="50%" height="auto"/>
 
 ### 1.6. User Stories
+
+With many attempts in redrafting the wireframes, the following user stories were deemed to be essential. This means that in the wireframes, the "Best Selling Product" and "Subscribe to Mailing List" features are not needed right now in the first release of the StudyHaven app and can therefore be omitted in the development of this project going forward.
+
 #### 1.6.1. Customer User Stories
 
 User Story 1:
@@ -161,62 +164,203 @@ User Story 10:
 ### 2.1. General Features
 
 #### 2.1.1. Base Elements
-- Navigation Bar
-- Search Bar
-- Footer
+- Navigation Bar - a light coloured navigation bar has been chosen for the StudyHaven application complimenting the background used for the section elements and making the links legible for users. The navigation bar consists of a search bar, links to the different application pages, my account links to login/register page (when not logged in) or my profile and logout my account and shopping basket (when logged in). An additional link via My Account is Product Admin, this link is available when a user with admin access level has logged in. This navigation bar is responsive, working well on different screen sizes and browsers. At a screen width between 576px and 991px, it displays the Brand name, My Account section and shopping basket link, with the application pages collapsed into a dropdown list. At a screen width of 575px or below, the My Account icon and links also join the dropdown list with the application pages. This is the view of the navigation bar on mobile screens.
+- Search Bar - allow users to browse through products available in the online shop also via the search. The search input into the search bar will be displayed in the Shop page. For example, if a user typed the letter 'w' in the search bar, all results for this search will be displayed on the shop page with a caption of the number of products found for the search input "w".
+- Footer - a light coloured footer also complimenting the background used for the section elements. The footer has a Contact Us section, Shop section and a Links section.
+  - The Contact Us section has an email mailto: link provided, so that when a user clicks on this email, they will be redirected to the Microsoft Outlook app where they can begin composing an email to the address provided. The footer consists of social media links for Facebook, Instagram, Twitter and YouTube.
+  - The Shop Section includes all the categories of the products available for sale on the website. Currently, there are five categories - 11+ workbooks, KS2 Workbooks, GCSE Workbooks, A-Level Workbooks and Stationery. Selecting any of the categories in this section, will allow the user to see a filtered view from the Shop tab of the selected category. For example, the 11+ Workbook category will display all 11+ Workbooks available for sale on the site.
+  - The Links section (prior to when a user is logged in), includes a login link, a register link, links to the FAQs page, privacy policy and terms & conditions statements. When a user is logged in Product Admin and My Profile and Logout links will now appear in this section and the login and register links are no longer available.
+
 #### 2.1.2. Home Page
-- Carousel Header
-- Sales Section
-- Testimonials
+- Carousel Header - consists of pink and yellow varied background styles, to once again compliment the colours used in the rest of the application. There are snapshots of some of the products available on the site, making this section both visually appealing and educative.
+- Sales Section - this section acts as a guide to help users as they explore the site to learn on the key products and services being offered by StudyHaven. There is an appropriate use of font awesome icons here to describe some of key areas - Workbooks, Stationery and Tutoring services. The Buy Workbooks and Buy Stationery buttons provide users with filtered view of the products available.
+- Testimonials - found on the home page in Our Customers' Reviews section, displays reviews from customers from buying products from the StudyHaven site or from using the StudyHaven tutoring services.
+
 #### 2.1.3. Shop Page
-- Filter Tags
-- Select Box
-- Products
+- Filter Tags - underneath the Shop heading there are currently five product categories, these are also listed in the Shop section of the footer. When a user clicks on a filter tag, the shop results are filtered based on the selected tag. To exit this filter, click the 'View All' link to display all products available on the site for sale.
+- Select Box - There are four options available, category A-Z, category(Z-A), Name(A-Z) and Name(Z-A). These options allow users to select their preference on products display method in either ascending or descending order of product category or name.
+- Products - all available products are displayed in a thumbnail which consists of a product picture, product name, price and category tag. The Product image is a link which opens up the full view of the product information. For users with admin access level, edit and delete buttons will appear besides the product price.
+
 #### 2.1.4. Product Info Page
-- Product image
-- Product Information
-- Quantity Selector
-- Buttons
+- Navigation Breadcrumbs - To help users keep track of where they have navigated to, there are navigation breadcrumbs available on the Product Info page in the format Home > Shop > Product Name. In this case, Home and Shop are links and users can also find their way back to previously visited areas of the site via these breadcrumbs.
+- Product image - users can click on the product image to view a close-up of the product perhaps to better analyse sizes and contents. To exit the close-up image view, users can click out of the image.
+- Product Information - users can read about more detailed information on the contents of the product here. This section includes information on materials and measurements.
+- Quantity Selector - users can select one or more of the product they would wish to buy.
+- Buttons - users have the options to either keep shopping or add to bag. If a user selects the Keep Shopping button, they will be returned to the Shop page without any item being added to their shopping basket. If a user selects the Add to Bag button, the selected quantity of the product they are viewing will be added to their shopping basket.
+
 #### 2.1.5. Shopping bag Page
-- Tabular display
-- Grid display
-- Bag Summary
+- Bag is the first step in the sale process. Displayed highlighted as point 1 out of 3 at the top of the page.
+- Tabular display - for medium to large screen widths the shopping basket is displayed to users in a tabular format. There is a delete button at the end of the table to delete items from the shopping bag.
+- Grid display - for small and extra small screen widths will use this grid display to allow a more responsive display of the products added in the shopping basket.
+- Bag Summary - includes information on the bag total, delivery cost (if below £22.75), grand total and a red discount alert to let the user know how much more they should spend to qualify for free delivery. For example, if the grand total of a user's shopping basket is £14.65, they would see an alert prompting them to `Spend £8.10 more to get free delivery!`.
+
 #### 2.1.6. Checkout Page
-- Checkout form
-- Bag Summary
+- Pay is the second step in the sale process. Displayed highlighted as point 2 out of 3 at the top of the page. At this stage, the Bag (Point 1 stage) will appear as ticked to show completion.
+- Checkout form - The checkout form will require the user to complete contact information, shipping address, and payment details (card number, expiry date and CVC number) to process the payment. Users have the option to save the shipping information they have provided to their profile. This means that next time when performing a checkout this saved information will be pre-filled on the checkout form.
+
 #### 2.1.7. Checkout Success Page
-Order Summary
+- Done is the third and final step in the sale process. Displayed highlighted as point 3 out of 3 at the top of the page. At this stage, the Bag (Point 1 stage) and Checkout (Point 2 stage) will appear as ticked to show completion.
+- Order Summary - this section includes information on the generated order number, order date, product details, shipping address and billing. Below this information are links for the user to either shop for more or navigate to their profile. The order summary will also be sent to the user's registered email and a modal confirmation will appear on the top corner of the page.
+
 #### 2.1.8. Profile Page
-- Contact & Shipping Information
-- Order History
+- Contact & Shipping Information - user can view and update their details by providing their up-to-date contact information and address. Selecting the update details button, allows users to save their information.
+- Order History - users have access to all the orders they make on the site. As they make more orders on the site, a scroll bar will appear to allow a user to scroll through their previous orders. When a user clicks on an order number, they will be redirected to the order summary information for that particular order.
+
 #### 2.1.9. Product Admin Page
-Add a Product
+- The only feature currently available on this page is the 'Add a Product' form. This form comprises of six fields namely: Category, Product Name, Product Description, Price, Image URL and Image. The last two are not required and the Django template handles this with an `if` statement. 
+
+- A "no-image" picture will be rendered in the event that the superuser does not upload an image or provide an image url. This still makes the product valid as in real life images can be updated as and whenever without affect the sale of the product itself. (Please go to Section 5. Testing for proof of this).
+
 #### 2.1.10. Tutoring Page
-- Description of Services
-- Calendly Widget
-- Table of Rates
+- Description of Services - It is important that the message about the services being offered by StudyHaven, are made as clear as possible to alleviate any possible misunderstanding. By displaying the two types of services with font awesome icons, the user will be given a visual reminder of what is being offered and what to expect.
+
+- Calendly Widget - The widget being displayed inline makes booking a consultation effortless. The script associated with this functionality was provided by [Calendly](https://calendly.com/) and was added to the `extra_js` block in the `base` html template.
+
+- Table of Rates - This is being rendered dynamically using the `Review` model (see section 3.2.5. Review Model). Like most rates, it is liable to change depending on the economy and business status so it is easier to allow the superuser to make these edits in the admin which will be immediately reflected back to the template thanks to the view.
+
 #### 2.1.11. FAQs Page
-Accordion
+- Accordion - This is rendered by the FAQ Model. The format is standard with the question as the header and the answer hidden in the box but requires the user to click to activate the dropdown. The colours used here were towards the darker end of the spectrum so that the accordion does not blend in with the fixed navigation bar.
+
 ### 2.2. Special Features
-- Loading Overlay
-- Go to Top Button
-- Bag to Order Steps
+- Loading Overlay - When customers make a payment, there is an overlay which when loaded will trigger the function to disable the form behind it. This prevents the user from clicking the secure payment button multiple times which could resort to multiple orders and payments:
+<img src="static/images/loading-overlay.png" alt="Loading Overlay" width="50%" height="auto"/>
+
+- Go to Top Button - Appears on pages that are expected to have a lot of information and where scrolling back up could be cumbersome (particularly the case with the small and extra small devices). This adds further user convenience throughout the navigation of the site which is a demonstration of good UX design.
+
+- "Bag to Order Summary" Steps - These steps can be found on the `Bag`, `Checkout` and `Checkout Success` pages. They give the user further indication of the stage of the process that they are at. This encourages a natural sense of hope and anticipation as they can clearly see a beginning and an end to the process. There is also CSS styling with the font awesome check icon upon completion of the previous step.
+<img src="static/images/checkout-success-step.PNG" alt="Checkout Success" width="50%" height="auto"/>
+
 ### 2.3. Future Features
-- Tick box to subscribe to discount codes when registering
-- Pagination for the products in the StudyHaven Shop
-- Ability to log in with Social Accounts
-- Best Selling Products
+
+- Possibility to add a check box on the sign up form for users to determine whether they wish to opt in or out of the StudyHaven mailing list. Benefits of opting in would include receiving discount codes.
+
+- As more products may be added, it would be nice to include pagination to prevent excessive scrolling on smaller devices. However due to the current time constraints, this feature could not be added in this release but will be added in the future release.
+
+- With Django AllAuth, there is functionality with the ability to log in with Social Accounts. However, the current style of registration and login still conveniently allows customers to create a secure StudyHaven account.
+
+- With eventual purchases made overtime, a counter can be applied on the order items and data could be drawn from that to render the Best Selling Products container in the home view as initially design in the wireframes.
 
 ## 3. Information Architecture
-### 3.1. Database
+### 3.1. Databases
+
+Due to the intended nature and task of this project, a relational database must be used. Django works with relational databases called SQL.
+- Throughout development the SQLite3 database was used to store models.
+- For the deployed version on Heroku, the relational database used is PostgreSQL.
+
 ### 3.2. Data Models
 #### 3.2.1. User Model
+
+__Aim:__ To render out user authentication system allowing users to register, login and other exceptional cases.
+
+- This was provided by Django AllAuth with `django.contrib.auth.models`. This is installed and added to the StudyHaven settings python file.
+
 #### 3.2.2. Order Model
-#### 3.2.3. FAQ Model
-#### 3.2.4. Review Model
-#### 3.2.5. Categories Model
-#### 3.2.6. Product Model
-#### 3.2.7. Tutoring Model
+
+__Aim:__ To render out the user's shipping and contact details to an order summary, Stripe's payment intent and the admin/database.
+
+    class Order(models.Model):
+
+        order_number = models.CharField(max_length=32, null=False, editable=False)
+        user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
+                                        null=True, blank=True,
+                                        related_name='order_history')
+        full_name = models.CharField(max_length=50, null=False, blank=False)
+        email_address = models.EmailField(max_length=254, null=False, blank=False)
+        phone_number = models.CharField(max_length=20, null=False, blank=False)
+        country = CountryField(blank_label='Country *', null=False, blank=False)
+        address_line1 = models.CharField(max_length=90, null=False, blank=False)
+        address_line2 = models.CharField(max_length=90, null=True, blank=True)
+        city_or_town = models.CharField(max_length=50, null=False, blank=False)
+        postcode = models.CharField(max_length=10, null=False, blank=False)
+        order_date = models.DateTimeField(auto_now_add=True)
+        order_total = models.DecimalField(
+            max_digits=8, decimal_places=2, null=False, default=0)
+        delivery_cost = models.DecimalField(
+            max_digits=4, decimal_places=2, null=False, default=0)
+        grand_total = models.DecimalField(
+            max_digits=8, decimal_places=2, null=False, default=0)
+
+        original_bag = models.TextField(null=False, blank=False, default='')
+        stripe_pi_id = models.CharField(
+            max_length=254, null=False, blank=False, default='')
+    
+#### 3.2.3. Line Order Model
+
+__Aim:__ To render out one order per product from the user's shopping bag; which will then be aggregated in order to reach the grand total.
+
+    class EachLineOrder(models.Model):
+
+        product = models.ForeignKey(
+            Product, blank=False, null=False,
+            on_delete=models.CASCADE)
+        quantity = models.IntegerField(
+            default=0, null=False, blank=False)
+        order = models.ForeignKey(
+            Order, blank=False, null=False,
+            on_delete=models.CASCADE,
+            related_name='each_line')
+        product_order_total = models.DecimalField(
+            max_digits=6, decimal_places=2, null=False, 
+            blank=False, editable=False)
+
+
+#### 3.2.4. FAQ Model
+
+__Aim:__ To render out the frequently asked questions in a standard question and response style accordion.
+
+    class FAQ(models.Model):
+
+        question = models.CharField(max_length=254, null=False, blank=False)
+        answer = models.TextField()
+
+
+#### 3.2.5. Review Model
+
+__Aim:__ To render out the Testimonials/reviews received from customers of both the shop and the tutoring services. The date field was added to automatically generate dates to keep track of feedback over a period of dates and allow some possible filtering in the future.
+
+    class Review(models.Model):
+
+        name = models.CharField(max_length=254, null=False, blank=False)
+        occupation = models.CharField(
+            max_length=254, null=False, blank=False, default='')
+        heading = models.CharField(max_length=254, null=False, blank=False)
+        description = models.TextField(null=False, blank=False)
+        date = models.DateField(auto_now_add=True)
+
+#### 3.2.6. Categories Model
+
+__Aim:__ To render out the categories to enable the filters in the Shop to function. The Shop Name renders the name of each categories whereas the name ensure no space are between words; if category has more than one word in it.
+
+    class Category(models.Model):
+
+        class Meta:
+            verbose_name_plural = 'Categories'  # to change data name in admin
+
+        name = models.CharField(max_length=254)
+        shop_name = models.CharField(max_length=254, blank=True)
+
+#### 3.2.7. Product Model
+
+__Aim:__ To render out the different products in the StudyHaven shop and allow superuser to add/edit products without uploading an image.
+
+    class Product(models.Model):
+
+        category = models.ForeignKey('Category', null=True,
+                                    blank=True, on_delete=models.SET_NULL)
+        name = models.CharField(max_length=254)
+        description = models.TextField()
+        price = models.DecimalField(max_digits=6, decimal_places=2)
+        image_url = models.URLField(max_length=1024, blank=True)
+        image = models.ImageField(blank=True)
+
+#### 3.2.8. Tutoring Model
+
+__Aim:__ To render out the hourly rates of the StudyHaven tutoring services.
+
+    class TutoringRate(models.Model):
+
+        subject = models.CharField(max_length=254, null=False, blank=False)
+        price = models.IntegerField(null=False, blank=False)
 
 ## 4. Technologies Used
 ### 4.1. Languages
@@ -333,5 +477,22 @@ _(Please note that as you are running locally the URL will be different so anoth
 
 ## 7. Credit
 ### 7.1. Content
+__Code Credit__
+- [Terms and Conditions Generator](https://www.termsandconditionsgenerator.com/) was used to generate the StudyHaven T&Cs.
+
+- [Privacy Policy Generator](https://www.privacypolicygenerator.info/) the sibling website to T&Cs generator, was used to generate the StudyHaven Privacy Policy.
+
+- Part of the development of this project took some inspiration from Code Institute - Boutique Ado, which served as an tutorial in familiarising myself with the basics of Django.
+
+__Media Credit__
+- Most of the images in the `stationery` category were sourced from Google. It is worth noting that these were just used for educational purposes only.
+
 ### 7.2. Acknowledgement
+- My mentor Caleb - for his guidance from conception to deployment and testing.
+- My family - for testing the website and providing encouragement and constructive feedback.
+- Code Institute Tutors - for their impressive patience whilst guiding me through long debugging sessions.
+- The Slack Community - for the open platform.
+- Code Institute Course Teachers - for the excellent break down of subject material.
+
 ### 7.3. Disclaimer
+This project was developed for educational purposes only.
