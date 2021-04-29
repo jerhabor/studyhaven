@@ -1,3 +1,14 @@
 from django.contrib import admin
+from .models import TutoringRate
 
-# Register your models here.
+
+class TutoringRateAdmin(admin.ModelAdmin):
+    list_display = (
+        'subject',
+        'price',
+    )
+
+    fields = ('subject', 'price',)
+
+
+admin.site.register(TutoringRate, TutoringRateAdmin)
