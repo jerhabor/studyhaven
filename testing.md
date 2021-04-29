@@ -304,7 +304,7 @@ I used the command: `python3 -m flake8` in the terminal to generate a list of er
 
 ## 5. Test on Different Browsers
 
-[BrowserStack](https://www.browserstack.com/screenshots) was used to test StudyHaven on different browsers. Due to the defensive programming, not all parts of the website can be accessed via BrowserStack. You can find screenshots of the Home, Shop, Tutoring and FAQs pages [here](https://crimson-mite-qujkxqa7.ws-eu03.gitpod.io/files/download/?id=42272730-d462-40fb-af85-f3ed423b12fc).
+[BrowserStack](https://www.browserstack.com/screenshots) was used to test StudyHaven on different browsers. Due to the defensive programming, not all parts of the website can be accessed via BrowserStack. You can find screenshots of the Home, Shop, Tutoring and FAQs pages [here](https://github.com/jerhabor/studyhaven/blob/166dba94c5c56e8bd5bd99a73a2c9f9182bed473/static/browser-tests).
 
 The table below, summarizes the website's versatility and compability across the different types of browsers; which any user could use.
 
