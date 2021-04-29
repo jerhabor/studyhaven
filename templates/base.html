@@ -157,9 +157,27 @@
         <footer class="page-footer font-small pt-4">
             <!-- Footer Links -->
             <div class="container-fluid text-center text-md-left">
-                <div class="row">
-                    <div class="col-md-6 mt-md-0 mt-3">
-                        <!-- Content -->
+                <!-- Search Box Container -->
+                <div class="row mt-2 mb-5 d-lg-none">
+                    <div class="col-12 search-container">
+                        <form action="{% url 'shop' %}" method="GET">
+                            <div class="input-group w-100">
+                                <div class="form-outline text-center d-inline-flex">
+                                    <input type="text" name="q" class="form-control search-bar-web" id="searchbar" placeholder="Search our shop"/>
+                                </div>
+                                <div class="input-group-append d-inline-flex">
+                                    <button type="submit" class="btn btn-dark form-control">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="row mt-2">
+                    <div class="col-md-6 mt-md-0 mt-2 mb-3">
+                        <!-- Contact StudyHaven -->
                         <h5 class="text-uppercase site-brand-text">Contact Us</h5>
                         <a href="mailto:studyhavenltd@gmail.com" class="footer-link">studyhavenltd@gmail.com</a>
                     </div>
@@ -385,23 +403,6 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">I understand</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- Search Box Container -->
-                <div class="row mt-4">
-                    <div class="col-12 search-container">
-                        <form action="{% url 'shop' %}" method="GET">
-                            <div class="input-group w-100">
-                                <div class="form-outline text-center d-inline-flex">
-                                    <input type="text" name="q" class="form-control search-bar-web" id="searchbar" placeholder="Search our shop"/>
-                                </div>
-                                <div class="input-group-append d-inline-flex">
-                                    <button type="submit" class="btn btn-dark form-control">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
