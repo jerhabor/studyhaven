@@ -73,7 +73,7 @@ As a site user or customer, their ability to update is limited to changing the q
 
 __How to update quantity of item(s) in shopping bag:__
 
-1. Add a few products from the Shop, to the shopping bag following the steps in section 1.1.
+1. Add a few products from the Shop, to the shopping bag following the steps in section 1.1 above.
 2. Click the shopping bag icon at the top right of the screen
 3. Under the word "quantity" use the stepper either by typing a value or using add and minus buttons to get to a different quantity.
 4. Quantity will only be allowed to be between 1 and 99 inclusive, so ensure a number within this range is chosen.
@@ -97,7 +97,7 @@ As a site user or customer, their delete functionalities are limited to only rem
 
 __How to remove item from bag:__
 
-1. Add a product to the bag from the Shop following the steps in section 1.1.
+1. Add a product to the bag from the Shop following the steps in section 1.1 above.
 2. Go to shopping bag by clicking the bag icon at the top right of the screen.
 3. Locate the circular "x" button
 4. Click the circular "x" button

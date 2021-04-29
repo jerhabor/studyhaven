@@ -5,48 +5,84 @@ Welcome to StudyHaven! This is an app that will reassure your capability for aca
 
 ## 1. User Experience
 Ideas for the application were divided into three. Even though users have their own goals when visiting the site, it was worth aligning them with the business goals (i.e. those of the site and store owners).
-### 1.1. User Stories
-#### 1.1.1. Customer User Stories
+### 1.1. Strategy Phase
 
-User Story 1
+With the pandemic shutting down schools and cancelling exams yet students were still being graded in a totally unexpected manner, their panic was inevitable. The aim of StudyHaven is to offer a safe space to provide assistance to students' learning. I decided to ask students what type of things would they like to see in an e-commerce website focused in education. As the store owner, I was aligned with their viewpoint of having a range of affordable custom-made study resources and stationery to alleviate any stress they may have. Then I met with former examiners and high-performers across a period of 2 months to develop a bespoke StudyHaven syllabus for the most popular subjects that students are struggling with right now. These subjects are:
+
+11 Plus (Ages 7 - 11):
+- Mathematics
+- English
+- Verbal Reasoning
+- Non-Verbal Reasoning
+
+KS2 (Ages 7 - 11):
+- Mathematics
+- English
+
+GCSE (Ages 11 - 16):
+- Biology
+- Business Studies
+- Chemistry
+- Computer Science
+- Economics
+- French
+- Mathematics
+- Physics
+- Spanish
+
+A-Level (Ages 16 - 18):
+- Biology
+- Business Studies
+- Chemistry
+- Computer Science
+- Economics
+- French
+- Mathematics
+- Physics
+- Spanish
+
+Please note that StudyHaven is looking into adding more subjects based on user demand.
+
+### 1.2. Scope Phase
+### 1.3. Structure Phase
+### 1.4. Skeleton Phase
+### 1.5. Surface Phase
+### 1.6. User Stories
+#### 1.6.1. Customer User Stories
+
+User Story 1:
 > As a customer, I would like to be able to make payment no more than 2 clicks after viewing items in my shopping bag.
 
-User Story 2
+User Story 2:
 > As a customer, I would like to be able to view my order history in order to keep track of my payments.
 
-User Story 3
+User Story 3:
 > As a customer, I would like to be browse through shop and add them to bag.
 
-#### 1.1.2. Site User Stories
+#### 1.6.2. Site User Stories
 
-User Story 4
+User Story 4:
 > As a site user, I would like the site to be responsive enough that I should not have to scroll horizontally to see tables/content.
 
-User Story 5
+User Story 5:
 > As a site user, when registering I would like to see options that verify my inputs.
 
-User Story 6
+User Story 6:
 > As a site user, I would like to be able to easily save my address details after a purchase to which I could reuse automatically.
 
-#### 1.1.2. Site Owner Stories
+#### 1.6.3. Site Owner Stories
 
-User Story 7
+User Story 7:
 > As a site owner, I would like to be able to add products regardless of whether they have an image or not.
 
-User Story 8
+User Story 8:
 > As a site owner, I would like to be able to edit products freely.
 
-User Story 9
+User Story 9:
 > As a site owner, I would like to be able to delete any unwanted or expired products.
 
-User Story 10
+User Story 10:
 > As a site owner, I would like to be able prevent any site user or hacker from bypassing the site urls.
-
-### 1.2. Strategy Phase
-### 1.3. Scope Phase
-### 1.4. Structure Phase
-### 1.5. Skeleton Phase
-### 1.6. Surface Phase
 
 ## 2. Features
 ### 2.1. General Features
@@ -76,10 +112,18 @@ User Story 10
 - Checkout form
 - Bag Summary
 #### 2.1.7. Checkout Success Page
+Order Summary
 #### 2.1.8. Profile Page
+- Contact & Shipping Information
+- Order History
 #### 2.1.9. Product Admin Page
+Add a Product
 #### 2.1.10. Tutoring Page
+- Description of Services
+- Calendly Widget
+- Table of Rates
 #### 2.1.11. FAQs Page
+Accordion
 ### 2.2. Special Features
 - Loading Overlay
 - Go to Top Button
@@ -92,12 +136,13 @@ User Story 10
 ## 3. Information Architecture
 ### 3.1. Database
 ### 3.2. Data Models
-#### 3.2.1. Order Model
-#### 3.2.1. FAQ Model
-#### 3.2.1. Review Model
-#### 3.2.1. Categories Model
-#### 3.2.1. Product Model
-#### 3.2.1. Tutoring Model
+#### 3.2.1. User Model
+#### 3.2.2. Order Model
+#### 3.2.3. FAQ Model
+#### 3.2.4. Review Model
+#### 3.2.5. Categories Model
+#### 3.2.6. Product Model
+#### 3.2.7. Tutoring Model
 
 ## 4. Technologies Used
 ### 4.1. Languages
