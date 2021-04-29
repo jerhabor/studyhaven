@@ -122,7 +122,7 @@ I came across a custom font called `Lovelo` which is youthful and great for bran
 
 ### 1.6. User Stories
 
-With many attempts in redrafting the wireframes, the following user stories were deemed to be essential. This means that in the wireframes, the "Best Selling Product" and "Subscribe to Mailing List" features are not needed right now in the first release of the StudyHaven app and can therefore be omitted in the development of this project going forward.
+With many attempts in redrafting the wireframes, the following user stories were those deemed to be essential. This means that in the wireframes, the "Best Selling Product" and "Subscribe to Mailing List" features are not needed right now in the first release of the StudyHaven app and can therefore be omitted in the development of this project going forward.
 
 #### 1.6.1. Customer User Stories
 
