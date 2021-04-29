@@ -229,7 +229,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 if 'DEVELOPMENT' in os.environ:
     """ Log email confirmations to console """
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_EMAIL_SENDER = 'info@studyhaven.com'
+    DEFAULT_EMAIL_SENDER = 'studyhavenltd@gmail.com'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
