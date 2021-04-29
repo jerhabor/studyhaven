@@ -39,6 +39,9 @@ User Story 8
 User Story 9
 > As a site owner, I would like to be able to delete any unwanted or expired products.
 
+User Story 10
+> As a site owner, I would like to be able prevent any site user or hacker from bypassing the site urls.
+
 ### 1.2. Strategy
 ### 1.3. Scope
 ### 1.4. Structure
