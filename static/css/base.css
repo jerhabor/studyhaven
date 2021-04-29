@@ -246,6 +246,10 @@ footer li:hover {
     font-weight: bold;
 }
 
+.quantity-stepper {
+    width: 50%;
+}
+
 /* ---------------------------------------------------- PRODUCT ADMIN TEMPLATES */
 
 .choose-image-btn {
@@ -461,6 +465,10 @@ footer li:hover {
 
     .order-number-col {
         width: 50%;
+    }
+
+    .quantity-stepper {
+        width: 100% !important;
     }
 }
 
