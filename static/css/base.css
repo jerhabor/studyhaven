@@ -221,31 +221,9 @@ footer li:hover {
     margin-bottom: 20px;
 }
 
-#reviews-slides li {
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    background-color: #000;
-}
-
-.checked {
-    color: #FFA500;
-}
-
-#reviews-slides .carousel-indicators {
-    bottom: -50px;
-}
-
-#reviews-slides .carousel-inner {
-    margin-bottom: 50px;
-}
-
-#reviews-slides .carousel-item {
-    padding: 0px 15px;
-}
-
-#reviews-slides p:first-of-type {
-    font-family: 'Barlow', sans-serif;
+.review-card {
+    background-color: #feefea;
+    border: 2px solid #000;
 }
 
 /* ---------------------------------------------------- PRODUCTS TEMPLATE */
