@@ -1,7 +1,7 @@
 <img src="static/images/studyhaven-mockup.PNG" alt="StudyHaven display on devices" width="100%" height="auto"/>
 
 # StudyHaven
-Welcome to StudyHaven! This is an app that will reassure your capability for academic success. Aimed at students of ages 7 - 18 years, StudyHaven provides top quality stationery to aid studying, details exam question written by former examiners and professional tutors who carry evidence of high performance in there academia. This is the place to get the very best out of your learning whilst knowing you can rely on attaining the necessary studying equipment and materials to become the best student you can be. 
+Welcome to StudyHaven! This is an app that will reassure your capability for academic success. Aimed at students of ages 7 - 18 years, StudyHaven provides top quality stationery to aid studying. The platform also hosts StudyHaven books with detailed exam questions written by former examiners and professional tutors who carry evidence of high performance in there academia. This is the place to get the very best out of your learning whilst utilising our top-tier studying equipment and materials to become the best student you can be. 
 
 StudyHaven is deployed to Heroku and can be accessed [here](https://studyhaven.herokuapp.com/).
 
@@ -63,6 +63,7 @@ StudyHaven is deployed to Heroku and can be accessed [here](https://studyhaven.h
 
 ## 1. User Experience
 Ideas for the application were divided into three. Even though users have their own goals when visiting the site, it was worth aligning them with the business goals (i.e. those of the site and store owners).
+
 ### 1.1. Strategy Phase
 
 With the pandemic shutting down schools and cancelling exams yet students were still being graded in a totally unexpected manner, their panic was inevitable. The aim of StudyHaven is to offer a safe space to provide assistance to students' learning. I decided to ask students what type of things would they like to see in an e-commerce website focused in education. As the store owner, I was aligned with their viewpoint of having a range of affordable custom-made study resources and stationery to alleviate any stress they may have. Then I met with former examiners and high-performers across a period of 2 months to develop a bespoke StudyHaven syllabus for the most popular subjects that students are struggling with right now. These subjects are:
